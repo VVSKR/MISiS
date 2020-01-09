@@ -20,6 +20,9 @@
 		F1B6488C23C3B1D000C097C7 /* CampusPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6488B23C3B1D000C097C7 /* CampusPresentor.swift */; };
 		F1B6489023C3B1EB00C097C7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6488F23C3B1EB00C097C7 /* AboutViewController.swift */; };
 		F1B6489223C3B1F900C097C7 /* AboutPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6489123C3B1F900C097C7 /* AboutPresentor.swift */; };
+		F1B6489E23C4C3B900C097C7 /* LessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6489D23C4C3B900C097C7 /* LessonCell.swift */; };
+		F1B648A123C4FA7800C097C7 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B648A023C4FA7800C097C7 /* ScheduleCell.swift */; };
+		F1B648A323C7D73600C097C7 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B648A223C7D73600C097C7 /* CustomSegmentedControl.swift */; };
 		F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */; };
 		F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9FA4A23C2A6030031ECE6 /* VIew.swift */; };
 		F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF088723C209820042CDE4 /* AuthPresentor.swift */; };
@@ -54,6 +57,9 @@
 		F1B6488B23C3B1D000C097C7 /* CampusPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusPresentor.swift; sourceTree = "<group>"; };
 		F1B6488F23C3B1EB00C097C7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		F1B6489123C3B1F900C097C7 /* AboutPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresentor.swift; sourceTree = "<group>"; };
+		F1B6489D23C4C3B900C097C7 /* LessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCell.swift; sourceTree = "<group>"; };
+		F1B648A023C4FA7800C097C7 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		F1B648A223C7D73600C097C7 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		F1D9FA4A23C2A6030031ECE6 /* VIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIew.swift; sourceTree = "<group>"; };
 		F1EF088723C209820042CDE4 /* AuthPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresentor.swift; sourceTree = "<group>"; };
@@ -100,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				F1EF088623C205370042CDE4 /* AppDelegate */,
-				F1B6487F23C39F8C00C097C7 /* Router.swift */,
-				F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */,
+				F1B6489B23C4C39400C097C7 /* Router */,
+				F1B6489C23C4C3A200C097C7 /* Builder */,
 				F1EF088B23C20A000042CDE4 /* AuthModule */,
 				F1B6489923C3BE5100C097C7 /* TabBarControllers */,
 				F1D9FA4D23C2A6180031ECE6 /* Extensions */,
@@ -109,6 +115,7 @@
 				F17EF7E123C2007600D36ED7 /* Info.plist */,
 				F17EF7DC23C2007600D36ED7 /* Assets.xcassets */,
 				F17EF7D923C2007500D36ED7 /* MISiS.xcdatamodeld */,
+				F1B648A423C7D73A00C097C7 /* UIView */,
 			);
 			path = MISiS;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F1B6488523C3B1A700C097C7 /* ScheduleViewController.swift */,
+				F1B6489F23C4F95800C097C7 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +213,39 @@
 				F1B6488423C3B17E00C097C7 /* AboutModule */,
 			);
 			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		F1B6489B23C4C39400C097C7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F1B6487F23C39F8C00C097C7 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F1B6489C23C4C3A200C097C7 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		F1B6489F23C4F95800C097C7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F1B648A023C4FA7800C097C7 /* ScheduleCell.swift */,
+				F1B6489D23C4C3B900C097C7 /* LessonCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F1B648A423C7D73A00C097C7 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				F1B648A223C7D73600C097C7 /* CustomSegmentedControl.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		F1D9FA4D23C2A6180031ECE6 /* Extensions */ = {
@@ -366,10 +407,13 @@
 				F1B6489223C3B1F900C097C7 /* AboutPresentor.swift in Sources */,
 				F1B6488623C3B1A700C097C7 /* ScheduleViewController.swift in Sources */,
 				F1EF088A23C209F10042CDE4 /* AuthViewController.swift in Sources */,
+				F1B648A323C7D73600C097C7 /* CustomSegmentedControl.swift in Sources */,
 				F1B6487E23C2AFB300C097C7 /* Colors.swift in Sources */,
+				F1B648A123C4FA7800C097C7 /* ScheduleCell.swift in Sources */,
 				F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */,
 				F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */,
 				F1B6489023C3B1EB00C097C7 /* AboutViewController.swift in Sources */,
+				F1B6489E23C4C3B900C097C7 /* LessonCell.swift in Sources */,
 				F17EF7DB23C2007500D36ED7 /* MISiS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5685WBW9QW;
 				INFOPLIST_FILE = MISiS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,6 +588,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5685WBW9QW;
 				INFOPLIST_FILE = MISiS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

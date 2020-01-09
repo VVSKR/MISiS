@@ -121,7 +121,6 @@ private extension AuthViewController {
         continueButton.setTitleColor(.systemBlue, for: .normal)
         continueButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
         continueButton.backgroundColor = .white
-        
         view.addSubview(continueButton)
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         
