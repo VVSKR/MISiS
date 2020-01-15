@@ -12,6 +12,12 @@ class ScheduleCell: UICollectionViewCell {
     
     static let reuseID = "ScheduleCell"
     
+    var dataSource: ScheduleDataSource? {
+        didSet {
+            tableView.dataSource = dataSource
+        }
+    }
+    
     var tableView = UITableView()
     
     private func setTableView() {
@@ -22,12 +28,13 @@ class ScheduleCell: UICollectionViewCell {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         tableView.rowHeight = UITableView.automaticDimension
+        
         tableView.register(LessonCell.self, forCellReuseIdentifier: LessonCell.reuseID)
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
+        
         contentView.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         tableView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
@@ -37,7 +44,7 @@ class ScheduleCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .systemPink
+        contentView.backgroundColor = .white
         setTableView()
     }
     
@@ -45,29 +52,5 @@ class ScheduleCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-}
-
-
-
-extension ScheduleCell: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: LessonCell.reuseID, for: indexPath) as! LessonCell
-        cell.lessonGroups.text  = "!!1112222!!!"
-        cell.lessonSubject.text = "Subject subjecy"
-        cell.lessonTeacher.text = "Ivanov A.V."
-        cell.lessonPlace.text = "Б-415"
-        cell.lessonType.text = "Type"
-        cell.lessonStartTime.text = "9:00"
-        cell.lessonFinishTime.text = "10:35"
-        cell.numberOfLesson.text = "\(indexPath.row)"
-        
-        return cell
-    }
-    
     
 }

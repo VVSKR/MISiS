@@ -6,9 +6,12 @@
 //  Copyright © 2020 Vova Skripnickenko. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ScheduleViewProtocol: class {
+    
+    func currentPosition() -> CGFloat
+    func setPositionSegmentControll(position: CGFloat)
     
     // функции которые должны срабатывть в view
     // видимо надо прям все сюда закидывать
@@ -16,6 +19,8 @@ protocol ScheduleViewProtocol: class {
 
 protocol ScheduleViewPresenterProtocol: class {
     init(view: ScheduleViewProtocol, router: RouterProtocol)
+    
+    func setSegmentPosition()
     
     // функции которые вызываются в view чтобы сработада бизнес логика
 }
@@ -26,10 +31,14 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
     weak var view: ScheduleViewProtocol?
     var router: RouterProtocol?
     
-    
     required init(view: ScheduleViewProtocol, router: RouterProtocol) {
         self.view = view
         self.router = router
+    }
+    
+    func setSegmentPosition() {
+        guard let position = view?.currentPosition()  else { return }
+        view?.setPositionSegmentControll(position: position)
     }
     
 }

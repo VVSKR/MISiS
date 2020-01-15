@@ -160,6 +160,7 @@ extension AuthViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - AuthView Protocol
 extension AuthViewController: AuthViewProtocol {
     
+    
     func setGreeting() {
         // что-то отрабатало и мы обновляем view тут
     }

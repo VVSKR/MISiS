@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11E7C2923CA04A100C2DDD3 /* CustomDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E7C2823CA04A100C2DDD3 /* CustomDataSourse.swift */; };
+		F11E7C2B23CB8A3000C2DDD3 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */; };
+		F1386BF623CE676000EF938A /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BF523CE676000EF938A /* ScheduleModel.swift */; };
+		F1386BF923CF1A7F00EF938A /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BF823CF1A7F00EF938A /* Substring.swift */; };
+		F1386BFB23CF2B4700EF938A /* ScheduleModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */; };
+		F1386BFD23CF3D1500EF938A /* LessonModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */; };
 		F17EF7D123C2007500D36ED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17EF7D023C2007500D36ED7 /* AppDelegate.swift */; };
 		F17EF7DB23C2007500D36ED7 /* MISiS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F17EF7D923C2007500D36ED7 /* MISiS.xcdatamodeld */; };
 		F17EF7DD23C2007600D36ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17EF7DC23C2007600D36ED7 /* Assets.xcassets */; };
@@ -23,6 +29,7 @@
 		F1B6489E23C4C3B900C097C7 /* LessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6489D23C4C3B900C097C7 /* LessonCell.swift */; };
 		F1B648A123C4FA7800C097C7 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B648A023C4FA7800C097C7 /* ScheduleCell.swift */; };
 		F1B648A323C7D73600C097C7 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B648A223C7D73600C097C7 /* CustomSegmentedControl.swift */; };
+		F1B648A623C8A4CB00C097C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B648A523C8A4CA00C097C7 /* Date.swift */; };
 		F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */; };
 		F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9FA4A23C2A6030031ECE6 /* VIew.swift */; };
 		F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF088723C209820042CDE4 /* AuthPresentor.swift */; };
@@ -40,6 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11E7C2823CA04A100C2DDD3 /* CustomDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataSourse.swift; sourceTree = "<group>"; };
+		F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		F1386BF523CE676000EF938A /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		F1386BF823CF1A7F00EF938A /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
+		F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModelDTO.swift; sourceTree = "<group>"; };
+		F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModelDTO.swift; sourceTree = "<group>"; };
 		F17EF7CD23C2007500D36ED7 /* MISiS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MISiS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17EF7D023C2007500D36ED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17EF7DA23C2007500D36ED7 /* MISiS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MISiS.xcdatamodel; sourceTree = "<group>"; };
@@ -60,6 +73,7 @@
 		F1B6489D23C4C3B900C097C7 /* LessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCell.swift; sourceTree = "<group>"; };
 		F1B648A023C4FA7800C097C7 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		F1B648A223C7D73600C097C7 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		F1B648A523C8A4CA00C097C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		F1D9FA4A23C2A6030031ECE6 /* VIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIew.swift; sourceTree = "<group>"; };
 		F1EF088723C209820042CDE4 /* AuthPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresentor.swift; sourceTree = "<group>"; };
@@ -84,6 +98,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1386BF723CE676400EF938A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1386BF523CE676000EF938A /* ScheduleModel.swift */,
+				F1386BFE23CF3D4100EF938A /* New Group */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1386BFE23CF3D4100EF938A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */,
+				F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		F17EF7C423C2007500D36ED7 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +166,7 @@
 			children = (
 				F1B6489323C3B22800C097C7 /* View */,
 				F1B6489423C3B22F00C097C7 /* Presenter */,
+				F1386BF723CE676400EF938A /* Model */,
 			);
 			path = ScheduleModule;
 			sourceTree = "<group>";
@@ -253,6 +286,10 @@
 			children = (
 				F1D9FA4A23C2A6030031ECE6 /* VIew.swift */,
 				F1B6487D23C2AFB300C097C7 /* Colors.swift */,
+				F1B648A523C8A4CA00C097C7 /* Date.swift */,
+				F11E7C2823CA04A100C2DDD3 /* CustomDataSourse.swift */,
+				F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */,
+				F1386BF823CF1A7F00EF938A /* Substring.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -398,17 +435,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1386BF623CE676000EF938A /* ScheduleModel.swift in Sources */,
 				F1B6488023C39F8C00C097C7 /* Router.swift in Sources */,
+				F11E7C2B23CB8A3000C2DDD3 /* TableView.swift in Sources */,
+				F1386BFD23CF3D1500EF938A /* LessonModelDTO.swift in Sources */,
 				F1B6488823C3B1B200C097C7 /* SchedulePresentor.swift in Sources */,
+				F11E7C2923CA04A100C2DDD3 /* CustomDataSourse.swift in Sources */,
 				F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */,
 				F1B6488C23C3B1D000C097C7 /* CampusPresentor.swift in Sources */,
+				F1386BF923CF1A7F00EF938A /* Substring.swift in Sources */,
 				F1B6488A23C3B1C400C097C7 /* CampusViewController.swift in Sources */,
 				F17EF7D123C2007500D36ED7 /* AppDelegate.swift in Sources */,
 				F1B6489223C3B1F900C097C7 /* AboutPresentor.swift in Sources */,
+				F1B648A623C8A4CB00C097C7 /* Date.swift in Sources */,
 				F1B6488623C3B1A700C097C7 /* ScheduleViewController.swift in Sources */,
 				F1EF088A23C209F10042CDE4 /* AuthViewController.swift in Sources */,
 				F1B648A323C7D73600C097C7 /* CustomSegmentedControl.swift in Sources */,
 				F1B6487E23C2AFB300C097C7 /* Colors.swift in Sources */,
+				F1386BFB23CF2B4700EF938A /* ScheduleModelDTO.swift in Sources */,
 				F1B648A123C4FA7800C097C7 /* ScheduleCell.swift in Sources */,
 				F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */,
 				F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */,
@@ -574,7 +618,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = VVS.MISiS;
+				PRODUCT_BUNDLE_IDENTIFIER = VVSKR.MISiS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -593,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = VVS.MISiS;
+				PRODUCT_BUNDLE_IDENTIFIER = VVSKR.MISiS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
