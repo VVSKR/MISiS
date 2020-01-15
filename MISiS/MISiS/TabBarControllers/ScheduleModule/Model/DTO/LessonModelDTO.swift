@@ -10,12 +10,12 @@ import Foundation
 
 struct LessonModelDTO: Decodable {
     
-    let day: Int?
-    let order: Int?
-    let kind: String?
-    let week: Int?
-    let location: String?
-    let teacher: String?
-    let begins: String?
-    let ends: String?
+    var day: Int?
+    var order: Int?
+    var kind: String?
+    var week: Int?
+    var location: String?
+    var teacher: String?
+    var begins: String?
+    var ends: String?
 }

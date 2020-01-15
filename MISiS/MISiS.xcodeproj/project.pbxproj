@@ -13,6 +13,7 @@
 		F1386BF923CF1A7F00EF938A /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BF823CF1A7F00EF938A /* Substring.swift */; };
 		F1386BFB23CF2B4700EF938A /* ScheduleModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */; };
 		F1386BFD23CF3D1500EF938A /* LessonModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */; };
+		F1386C0023CF3DC600EF938A /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFF23CF3DC500EF938A /* LessonModel.swift */; };
 		F17EF7D123C2007500D36ED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17EF7D023C2007500D36ED7 /* AppDelegate.swift */; };
 		F17EF7DB23C2007500D36ED7 /* MISiS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F17EF7D923C2007500D36ED7 /* MISiS.xcdatamodeld */; };
 		F17EF7DD23C2007600D36ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17EF7DC23C2007600D36ED7 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		F1386BF823CF1A7F00EF938A /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
 		F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModelDTO.swift; sourceTree = "<group>"; };
 		F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModelDTO.swift; sourceTree = "<group>"; };
+		F1386BFF23CF3DC500EF938A /* LessonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModel.swift; sourceTree = "<group>"; };
 		F17EF7CD23C2007500D36ED7 /* MISiS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MISiS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17EF7D023C2007500D36ED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17EF7DA23C2007500D36ED7 /* MISiS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MISiS.xcdatamodel; sourceTree = "<group>"; };
@@ -102,18 +104,19 @@
 			isa = PBXGroup;
 			children = (
 				F1386BF523CE676000EF938A /* ScheduleModel.swift */,
-				F1386BFE23CF3D4100EF938A /* New Group */,
+				F1386BFF23CF3DC500EF938A /* LessonModel.swift */,
+				F1386BFE23CF3D4100EF938A /* DTO */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		F1386BFE23CF3D4100EF938A /* New Group */ = {
+		F1386BFE23CF3D4100EF938A /* DTO */ = {
 			isa = PBXGroup;
 			children = (
 				F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */,
 				F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */,
 			);
-			path = "New Group";
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		F17EF7C423C2007500D36ED7 = {
@@ -442,6 +445,7 @@
 				F1B6488823C3B1B200C097C7 /* SchedulePresentor.swift in Sources */,
 				F11E7C2923CA04A100C2DDD3 /* CustomDataSourse.swift in Sources */,
 				F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */,
+				F1386C0023CF3DC600EF938A /* LessonModel.swift in Sources */,
 				F1B6488C23C3B1D000C097C7 /* CampusPresentor.swift in Sources */,
 				F1386BF923CF1A7F00EF938A /* Substring.swift in Sources */,
 				F1B6488A23C3B1C400C097C7 /* CampusViewController.swift in Sources */,
