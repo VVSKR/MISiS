@@ -31,7 +31,7 @@ struct NetworkManager: NetworkManagerProtocol {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let apiResponse = try decoder.decode(ScheduleModelDTO.self, from: responseData)
                 let scheduleModel = ScheduleModel(dto: apiResponse) // проверить success на true
-                print(scheduleModel)
+               
                 completion(.success(scheduleModel))
             } catch {
                 print(error)

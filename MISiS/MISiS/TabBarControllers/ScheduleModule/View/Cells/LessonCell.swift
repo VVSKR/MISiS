@@ -36,6 +36,7 @@ class LessonCell: UITableViewCell {
     }
     
     func set(lesson: LessonModel) {
+        numberOfLesson.text = String(lesson.order)
         lessonStartTime.text = lesson.begins
         lessonFinishTime.text = lesson.ends
         lessonSubject.text = lesson.lessonName
@@ -102,17 +103,18 @@ private extension LessonCell {
         
         NSLayoutConstraint.activate([
             lessonTimeStackView.leadingAnchor.constraint(equalTo: numberOfLesson.leadingAnchor, constant: 25),
-            lessonTimeStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            lessonTimeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25)
-            
+            lessonTimeStackView.heightAnchor.constraint(equalToConstant: 55),
+            lessonTimeStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+       
+        
     }
     
     
     func setLesson() {
         
         lessonSubject.font = UIFont.boldSystemFont(ofSize: 17)
-        lessonSubject.numberOfLines = 1
+        lessonSubject.numberOfLines = 2
         
         lessonType.font = UIFont.systemFont(ofSize: 15)
         
@@ -127,7 +129,7 @@ private extension LessonCell {
         lessonStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5)
         lessonStackView.isLayoutMarginsRelativeArrangement = true
         
-        lessonStackView.distribution = .equalCentering
+        lessonStackView.distribution = .fill
         lessonStackView.axis = .vertical
         lessonStackView.spacing = 5
         lessonStackView.addSeparator(at: .left, color: .lightGray)

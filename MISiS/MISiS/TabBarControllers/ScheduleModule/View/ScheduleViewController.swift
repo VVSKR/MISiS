@@ -41,9 +41,10 @@ class ScheduleViewController: UIViewController {
     }
     
     @objc func rightButtonPressed() {
+        collectionView.reloadData()
 //         let index = Date.getIndexOfDayForSegmented() // перенести в презентор
 //         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
-        dateField.becomeFirstResponder()
+//        dateField.becomeFirstResponder()
     }
 }
 
@@ -141,7 +142,9 @@ extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleCell.reuseID, for: indexPath) as? ScheduleCell else { return UICollectionViewCell() }
-        presenter.setDataSourse(cell)
+        
+        presenter.setDataSourse(cell, indexPath: indexPath.row)
+        
         return cell
         
     }

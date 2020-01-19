@@ -21,10 +21,10 @@ protocol ScheduleViewPresenterProtocol: class {
     init(view: ScheduleViewProtocol, schedule: [LessonModel], router: RouterProtocol)
     
     func setSegmentPosition()
-    func getLessons(for day: Day) -> [LessonModel]
+    func getLessons(for day: Int) -> [LessonModel]
     func setCurrentWeek(for date: Date)
     func returnCurrentWeek() -> Int
-    func setDataSourse(_ cell: ScheduleCell)
+    func setDataSourse(_ cell: ScheduleCell, indexPath: Int)
     // функции которые вызываются в view чтобы сработада бизнес логика
 }
 
@@ -54,9 +54,11 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
         view?.setPositionSegmentControll(position: position)
     }
     
-    func getLessons(for day: Day) -> [LessonModel] {
-        let week: Week = (currentWeek & 1) == 0 ? .upper : .lower // можно добавить глобальную переменную верхней и нижней недели, чтобы перезагружать коллекцию только если меняется неделся (добавить релоуд в дид сет)
-        return schedule.filter { $0.day == day.rawValue && $0.week == week.rawValue }
+    func getLessons(for day: Int) -> [LessonModel] {
+        let week: Week = (currentWeek & 1) == 0 ? .upper : .lower
+        print(week.rawValue)
+        //        let day = day.rawValue// можно добавить глобальную переменную верхней и нижней недели, чтобы перезагружать коллекцию только если меняется неделся (добавить релоуд в дид сет)
+        return schedule.filter { $0.day == day && $0.week == week.rawValue }
     }
     
     func setCurrentWeek(for date: Date) {
@@ -69,7 +71,10 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
         return currentWeek
     }
     
-    func setDataSourse(_ cell: ScheduleCell) {
+    func setDataSourse(_ cell: ScheduleCell, indexPath: Int) {
+        let schedule = getLessons(for: indexPath + 1) // Структура Day хуйнч какая-то, надо поменять
+        print("---------  \(indexPath) \(indexPath) \(indexPath) ---------")
+        print(schedule)
         cell.dataSource = ScheduleDataSource(lessons: schedule, currentWeek: currentWeek)
     }
     

@@ -29,9 +29,7 @@ class RouterNetwork<EndPoint: EndPointType>: NetworkRouter {
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         do {
             let request = try self.buildRequest(from: route)
-            print(String(data: request.httpBody!, encoding: .utf8))
-            print(request.httpBody?.count)
-            print(request.httpBody)
+
             task = session.dataTask(with: request, completionHandler: { data, response, error in
                 completion(data, response, error)
             })
@@ -52,7 +50,7 @@ class RouterNetwork<EndPoint: EndPointType>: NetworkRouter {
             case .request: request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 
             case .requestParameters(let bodyParameters, let bodyEncoding, let urlParameters):
-                
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 try self.configureParameters(bodyParameters: bodyParameters, bodyEncoding: bodyEncoding,
                                              urlParameters: urlParameters, request: &request)
                 

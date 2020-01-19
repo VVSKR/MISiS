@@ -24,7 +24,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
         let currentDayLessonsCount = lessons.count
         handleEmptyState(for: tableView, cellAmount: currentDayLessonsCount)
         return currentDayLessonsCount
-//        return lessons.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,7 +32,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
         let lesson = lessons[indexPath.row]
         
         cell.set(lesson: lesson)
-        
+        return cell
         
         guard let lessonStartTime = getLessonData(time: lesson.begins),
             let lessonEndTime = getLessonData(time: lesson.ends) else { return cell }
@@ -43,7 +43,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
             cell.lessonSubject.backgroundColor =  .clear
         }
         
-        return cell
+        
     }
     
     

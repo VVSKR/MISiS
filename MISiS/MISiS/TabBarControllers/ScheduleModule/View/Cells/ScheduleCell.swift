@@ -15,6 +15,7 @@ class ScheduleCell: UICollectionViewCell {
     var dataSource: ScheduleDataSource? {
         didSet {
             tableView.dataSource = dataSource
+             tableView.reloadData()
         }
     }
     
