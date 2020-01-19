@@ -16,7 +16,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initialViewController()
-    func pushToMainTabBar()
+    func pushToMainTabBar(schedule: [LessonModel])
     func popToRoot()
 }
 
@@ -39,11 +39,11 @@ class Router: RouterProtocol {
         }
     }
     
-    func pushToMainTabBar() {
+    func pushToMainTabBar(schedule: [LessonModel]) {
         if let navigationController = navigationController {
             let tabBarController = UITabBarController()
             guard let assemblyBuilder = assemblyBuilder else { return }
-            let scheduleViewController = assemblyBuilder.createScheduleModule(router: self)
+            let scheduleViewController = assemblyBuilder.createScheduleModule(schedule: schedule, router: self)
             let campusViewController = assemblyBuilder.createCampusModule()
             
             

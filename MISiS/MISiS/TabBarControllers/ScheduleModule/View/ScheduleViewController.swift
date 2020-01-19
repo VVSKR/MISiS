@@ -17,6 +17,8 @@ class ScheduleViewController: UIViewController {
     var segmentControll: CustomSegmentedControl!
     var collectionView: UICollectionView!
     
+    var dateField: UITextField!
+    var datePicker: UIDatePicker!
     
     
     // MARK: - Life Cycle
@@ -26,13 +28,11 @@ class ScheduleViewController: UIViewController {
         
         setSegmentControll()
         setCollectionView()
-        segmentControll.delegate = self // перенести в презентор
-        title = Date().makeTitle()
-        // Do any additional setup after loading the view.
-        let index = Date.getIndexOfDayForSegmented()
-        UIView.animate(withDuration: 1, delay: 2, options: [], animations: {
-               self.collectionView.scrollToItem(at: IndexPath(item: 3, section: 0), at: .right, animated: true)
-        })
+        setDatePicker()
+        setTapGesture()
+//        presenter.setCurrentWeek(for: Date()) // возможно то надо переносить в презентов, но хз
+        title = Date().makeTitle() // перенести в презентор
+    
           
         
         let rightBarItem = UIBarButtonItem(title: "Hi", style: .done, target: self, action: #selector(rightButtonPressed))
@@ -41,16 +41,18 @@ class ScheduleViewController: UIViewController {
     }
     
     @objc func rightButtonPressed() {
-         let index = Date.getIndexOfDayForSegmented()
-         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
+//         let index = Date.getIndexOfDayForSegmented() // перенести в презентор
+//         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
+        dateField.becomeFirstResponder()
     }
 }
 
-
+// MARK: - Setup view
 private extension ScheduleViewController {
     
     func setSegmentControll() {
         segmentControll = CustomSegmentedControl()
+        segmentControll.delegate = self
         segmentControll.setButtonTitles(buttonTitles: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб"])
         
         segmentControll.backgroundColor = .clear
@@ -85,18 +87,61 @@ private extension ScheduleViewController {
             collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
     }
+    // MARK: - Date Picker
+    func setDatePicker() {
+        dateField = UITextField(frame: .zero)
+        view.addSubview(dateField)
+        datePicker = UIDatePicker()
+        dateField.inputView = datePicker
+        
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = Date()
+        
+        let localID = Locale.preferredLanguages.first
+        datePicker.locale = Locale(identifier: localID!)
+        
+        setPickerToolBar()
+    }
+    
+    func setPickerToolBar() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        let todayButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(doneAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([todayButton, flexSpace, doneButton], animated: true)
+        dateField.inputAccessoryView = toolBar
+    }
+    
+    @objc
+    func doneAction() {
+        let currentDate = datePicker.date
+        datePicker.date = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)!
+//        view.endEditing(true)
+    }
+    
+    func setTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureHundle))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    func tapGestureHundle() {
+        view.endEditing(true)
+    }
 }
 
 // MARK: - CollectionView Delegate, DataSourse
 extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 6 // надо какой-то патерн замутить, так нельхя оставлять
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleCell.reuseID, for: indexPath) as? ScheduleCell else { return UICollectionViewCell() }
-        
-        cell.dataSource = ScheduleDataSource(day: Day.thursday, lessons: [LessonInfo(time: "11-11", subject: "Subject", type: "Type", place: "Place", groups: "Group", teacher: "Teatcher")], days: "3", month: 1)
+        presenter.setDataSourse(cell)
         return cell
         
     }
@@ -112,14 +157,15 @@ extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     
-    
-    
-    
 }
 
 
 // MARK: - Protocol extension
 extension ScheduleViewController: ScheduleViewProtocol {
+    
+    func setTitle(_ title: String?) {
+        self.title = title
+    }
     
     func currentPosition() -> CGFloat {
         return collectionView.contentOffset.x / view.frame.width // можно перенести логику в презентор

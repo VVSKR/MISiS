@@ -8,7 +8,7 @@ class CustomSegmentedControl: UIView {
     private var buttons: [UIButton] = []
     private var selectorView: UIView!
     
-    var textColor:UIColor = .black
+    var textColor: UIColor = .black
     var selectorViewColor: UIColor = .lightBlue
     var selectorTextColor: UIColor = .lightBlue
     
@@ -73,7 +73,6 @@ extension CustomSegmentedControl {
         createButton()
         configSelectorView()
         configStackView()
-        print(buttons.count)
     }
     
     private func configStackView() {
@@ -107,6 +106,7 @@ extension CustomSegmentedControl {
         for buttonTitle in buttonTitles {
             let button = UIButton(type: .system)
             button.setTitle(buttonTitle, for: .normal)
+            button.titleLabel?.font = .systemFont(ofSize: 18, weight: .thin)
             button.addTarget(self, action:#selector(buttonAction(sender:)), for: .touchUpInside)
             button.setTitleColor(textColor, for: .normal)
             buttons.append(button)

@@ -10,7 +10,7 @@ import UIKit
 
 protocol AssemblyBuilderProtocol {
     func createAuthModule(router: RouterProtocol) -> UIViewController
-    func createScheduleModule(router: RouterProtocol) -> UIViewController
+    func createScheduleModule(schedule: [LessonModel], router: RouterProtocol) -> UIViewController
     func createCampusModule() -> UIViewController
 }
 
@@ -18,15 +18,16 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     
     func createAuthModule(router: RouterProtocol) -> UIViewController {
         let view = AuthViewController()
-        let presenter = AuthPresentor(view: view, router: router)
+        let networkManager = NetworkManager()
+        let presenter = AuthPresentor(view: view, networkManager: networkManager, router: router)
         view.presenter = presenter
         return view
     }
     
     
-    func createScheduleModule(router: RouterProtocol) -> UIViewController {
+    func createScheduleModule(schedule: [LessonModel], router: RouterProtocol) -> UIViewController {
         let view = ScheduleViewController()
-        let presenter = SchedulePresenter(view: view, router: router)
+        let presenter = SchedulePresenter(view: view, schedule: schedule, router: router)
         view.presenter = presenter
         return view
     }
@@ -37,9 +38,4 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
         view.presenter = presenter
         return view
     }
-    
-    
-  
-    
-    
 }

@@ -12,11 +12,12 @@ struct ScheduleModel {
     let success: Bool
     var schedule: [LessonModel]
     
-    
     init(dto: ScheduleModelDTO) {
         success = dto.success ?? false
         schedule = dto.schedule?.map { LessonModel(dto: $0) } ?? []
     }
+    
+    
 }
 
 

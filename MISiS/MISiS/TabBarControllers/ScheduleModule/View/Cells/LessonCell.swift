@@ -23,7 +23,6 @@ class LessonCell: UITableViewCell {
     let lessonStackView = UIStackView()
     let lessonSubject = UILabel()
     let lessonType = UILabel()
-    let lessonGroups = UILabel()
     let lessonTeacher = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -34,6 +33,15 @@ class LessonCell: UITableViewCell {
         setLessonTime()
         setLessonPlace()
         setLesson()
+    }
+    
+    func set(lesson: LessonModel) {
+        lessonStartTime.text = lesson.begins
+        lessonFinishTime.text = lesson.ends
+        lessonSubject.text = lesson.lessonName
+        lessonType.text = lesson.type
+        lessonPlace.text = lesson.location
+        lessonTeacher.text = lesson.teacher
     }
     
     required init?(coder: NSCoder) {
@@ -136,7 +144,6 @@ private extension LessonCell {
     }
     
     func setLessonPlace() {
-        
         lessonPlace.font = UIFont.systemFont(ofSize: 15)
         lessonPlace.textAlignment = .right
         contentView.addSubview(lessonPlace)
@@ -148,58 +155,5 @@ private extension LessonCell {
         ])
         
         
-    }
-    
-    func setLessonSubject() {
-        lessonSubject.font = UIFont.systemFont(ofSize: 16)
-        lessonSubject.numberOfLines = 0
-        contentView.addSubview(lessonSubject)
-        NSLayoutConstraint.activate([
-            
-        ])
-        lessonSubject.translatesAutoresizingMaskIntoConstraints = false
-        lessonSubject.topAnchor.constraint(equalTo: lessonStartTime.bottomAnchor, constant: 4).isActive = true
-        lessonSubject.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        lessonSubject.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
-    }
-    
-    func setLessonType() {
-        lessonType.font = UIFont.systemFont(ofSize: 14)
-        contentView.addSubview(lessonType)
-        
-        lessonType.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            
-        ])
-        lessonType.topAnchor.constraint(equalTo: lessonSubject.bottomAnchor, constant: 4).isActive = true
-        lessonType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        lessonType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
-    }
-    
-    func setLessonGroups() {
-        lessonGroups.font = UIFont.systemFont(ofSize: 14)
-        lessonGroups.textColor = .darkGray
-        contentView.addSubview(lessonGroups)
-        lessonGroups.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            
-        ])
-        lessonGroups.topAnchor.constraint(equalTo: lessonType.bottomAnchor, constant: 4).isActive = true
-        lessonGroups.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        lessonGroups.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
-    }
-    
-    func setLessonTeacher() {
-        lessonTeacher.font = UIFont.systemFont(ofSize: 14)
-        lessonTeacher.textColor = .darkGray
-        contentView.addSubview(lessonTeacher)
-        lessonTeacher.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            
-        ])
-        lessonTeacher.topAnchor.constraint(equalTo: lessonGroups.bottomAnchor, constant: 4).isActive = true
-        lessonTeacher.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        lessonTeacher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
-        lessonTeacher.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
     }
 }

@@ -10,21 +10,22 @@ import Foundation
 
 struct LessonModel {
     
+    private let kind: String
+    
     let day: Int
     let order: Int
-    let kind: String
     let week: Int
     let location: String
     let teacher: String
     let begins: String
     let ends: String
     
-    var type: String {
+    public var type: String {
         guard let type = kind.slice(from: "(", to: ")") else { return ""}
         return type
     }
     
-    var lessonName: String? {
+    public var lessonName: String? {
         return kind.replacingOccurrences(of: "(\(type))", with: "")
     }
     

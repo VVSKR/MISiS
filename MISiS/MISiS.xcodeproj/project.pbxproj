@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F11E7C2923CA04A100C2DDD3 /* CustomDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E7C2823CA04A100C2DDD3 /* CustomDataSourse.swift */; };
+		F11E7C2923CA04A100C2DDD3 /* ScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E7C2823CA04A100C2DDD3 /* ScheduleDataSource.swift */; };
 		F11E7C2B23CB8A3000C2DDD3 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */; };
+		F133898A23CF798800496B62 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F133898923CF798800496B62 /* Day.swift */; };
+		F133898C23CF8E9D00496B62 /* UIVIew + SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F133898B23CF8E9D00496B62 /* UIVIew + SeparatorLine.swift */; };
 		F1386BF623CE676000EF938A /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BF523CE676000EF938A /* ScheduleModel.swift */; };
-		F1386BF923CF1A7F00EF938A /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BF823CF1A7F00EF938A /* Substring.swift */; };
+		F1386BF923CF1A7F00EF938A /* String + Slice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BF823CF1A7F00EF938A /* String + Slice.swift */; };
 		F1386BFB23CF2B4700EF938A /* ScheduleModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */; };
 		F1386BFD23CF3D1500EF938A /* LessonModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */; };
 		F1386C0023CF3DC600EF938A /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1386BFF23CF3DC500EF938A /* LessonModel.swift */; };
@@ -19,7 +21,17 @@
 		F17EF7DD23C2007600D36ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17EF7DC23C2007600D36ED7 /* Assets.xcassets */; };
 		F17EF7E023C2007600D36ED7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17EF7DE23C2007600D36ED7 /* LaunchScreen.storyboard */; };
 		F17EF7EB23C2007700D36ED7 /* MISiSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17EF7EA23C2007700D36ED7 /* MISiSTests.swift */; };
-		F1B6487E23C2AFB300C097C7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6487D23C2AFB300C097C7 /* Colors.swift */; };
+		F18AA43423D0FAA000A8FE8C /* JSON lesson.json in Resources */ = {isa = PBXBuildFile; fileRef = F18AA43323D0FAA000A8FE8C /* JSON lesson.json */; };
+		F18AA43723D1ECA900A8FE8C /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA43623D1ECA900A8FE8C /* EndPointType.swift */; };
+		F18AA43A23D1EF5A00A8FE8C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA43923D1EF5A00A8FE8C /* NetworkRouter.swift */; };
+		F18AA43C23D1F17400A8FE8C /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA43B23D1F17400A8FE8C /* EndPoint.swift */; };
+		F18AA43E23D1F26F00A8FE8C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA43D23D1F26F00A8FE8C /* HTTPMethod.swift */; };
+		F18AA44323D26CCA00A8FE8C /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44223D26CCA00A8FE8C /* HTTPTask.swift */; };
+		F18AA44523D271AB00A8FE8C /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44423D271AB00A8FE8C /* ParameterEncoding.swift */; };
+		F18AA44723D2729B00A8FE8C /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44623D2729B00A8FE8C /* JSONParameterEncoder.swift */; };
+		F18AA44A23D279BB00A8FE8C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44923D279BB00A8FE8C /* NetworkManager.swift */; };
+		F18AA44C23D27B6700A8FE8C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44B23D27B6700A8FE8C /* APIError.swift */; };
+		F1B6487E23C2AFB300C097C7 /* UIColor + Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6487D23C2AFB300C097C7 /* UIColor + Colors.swift */; };
 		F1B6488023C39F8C00C097C7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6487F23C39F8C00C097C7 /* Router.swift */; };
 		F1B6488623C3B1A700C097C7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6488523C3B1A700C097C7 /* ScheduleViewController.swift */; };
 		F1B6488823C3B1B200C097C7 /* SchedulePresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6488723C3B1B200C097C7 /* SchedulePresentor.swift */; };
@@ -48,10 +60,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F11E7C2823CA04A100C2DDD3 /* CustomDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataSourse.swift; sourceTree = "<group>"; };
+		F11E7C2823CA04A100C2DDD3 /* ScheduleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 		F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		F133898923CF798800496B62 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		F133898B23CF8E9D00496B62 /* UIVIew + SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew + SeparatorLine.swift"; sourceTree = "<group>"; };
 		F1386BF523CE676000EF938A /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
-		F1386BF823CF1A7F00EF938A /* Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Substring.swift; sourceTree = "<group>"; };
+		F1386BF823CF1A7F00EF938A /* String + Slice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Slice.swift"; sourceTree = "<group>"; };
 		F1386BFA23CF2B4700EF938A /* ScheduleModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModelDTO.swift; sourceTree = "<group>"; };
 		F1386BFC23CF3D1500EF938A /* LessonModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModelDTO.swift; sourceTree = "<group>"; };
 		F1386BFF23CF3DC500EF938A /* LessonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModel.swift; sourceTree = "<group>"; };
@@ -64,7 +78,17 @@
 		F17EF7E623C2007700D36ED7 /* MISiSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MISiSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17EF7EA23C2007700D36ED7 /* MISiSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MISiSTests.swift; sourceTree = "<group>"; };
 		F17EF7EC23C2007700D36ED7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1B6487D23C2AFB300C097C7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F18AA43323D0FAA000A8FE8C /* JSON lesson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "JSON lesson.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		F18AA43623D1ECA900A8FE8C /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		F18AA43923D1EF5A00A8FE8C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		F18AA43B23D1F17400A8FE8C /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F18AA43D23D1F26F00A8FE8C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		F18AA44223D26CCA00A8FE8C /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		F18AA44423D271AB00A8FE8C /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		F18AA44623D2729B00A8FE8C /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		F18AA44923D279BB00A8FE8C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F18AA44B23D27B6700A8FE8C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F1B6487D23C2AFB300C097C7 /* UIColor + Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Colors.swift"; sourceTree = "<group>"; };
 		F1B6487F23C39F8C00C097C7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F1B6488523C3B1A700C097C7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		F1B6488723C3B1B200C097C7 /* SchedulePresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresentor.swift; sourceTree = "<group>"; };
@@ -105,6 +129,8 @@
 			children = (
 				F1386BF523CE676000EF938A /* ScheduleModel.swift */,
 				F1386BFF23CF3DC500EF938A /* LessonModel.swift */,
+				F133898923CF798800496B62 /* Day.swift */,
+				F18AA43323D0FAA000A8FE8C /* JSON lesson.json */,
 				F1386BFE23CF3D4100EF938A /* DTO */,
 			);
 			path = Model;
@@ -145,6 +171,7 @@
 				F1B6489C23C4C3A200C097C7 /* Builder */,
 				F1EF088B23C20A000042CDE4 /* AuthModule */,
 				F1B6489923C3BE5100C097C7 /* TabBarControllers */,
+				F18AA43823D1ECB800A8FE8C /* Network */,
 				F1D9FA4D23C2A6180031ECE6 /* Extensions */,
 				F1EF088523C205240042CDE4 /* Assets */,
 				F17EF7E123C2007600D36ED7 /* Info.plist */,
@@ -162,6 +189,54 @@
 				F17EF7EC23C2007700D36ED7 /* Info.plist */,
 			);
 			path = MISiSTests;
+			sourceTree = "<group>";
+		};
+		F18AA43823D1ECB800A8FE8C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F18AA44923D279BB00A8FE8C /* NetworkManager.swift */,
+				F18AA43F23D1F29800A8FE8C /* EndPoint */,
+				F18AA44023D1F2B700A8FE8C /* Service */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F18AA43F23D1F29800A8FE8C /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				F18AA43B23D1F17400A8FE8C /* EndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		F18AA44023D1F2B700A8FE8C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F18AA44123D1F2BD00A8FE8C /* Router */,
+				F18AA43623D1ECA900A8FE8C /* EndPointType.swift */,
+				F18AA43D23D1F26F00A8FE8C /* HTTPMethod.swift */,
+				F18AA44223D26CCA00A8FE8C /* HTTPTask.swift */,
+				F18AA44B23D27B6700A8FE8C /* APIError.swift */,
+				F18AA44823D276A000A8FE8C /* Encoding */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F18AA44123D1F2BD00A8FE8C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F18AA43923D1EF5A00A8FE8C /* NetworkRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F18AA44823D276A000A8FE8C /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				F18AA44423D271AB00A8FE8C /* ParameterEncoding.swift */,
+				F18AA44623D2729B00A8FE8C /* JSONParameterEncoder.swift */,
+			);
+			path = Encoding;
 			sourceTree = "<group>";
 		};
 		F1B6488223C3B15B00C097C7 /* ScheduleModule */ = {
@@ -288,11 +363,12 @@
 			isa = PBXGroup;
 			children = (
 				F1D9FA4A23C2A6030031ECE6 /* VIew.swift */,
-				F1B6487D23C2AFB300C097C7 /* Colors.swift */,
+				F133898B23CF8E9D00496B62 /* UIVIew + SeparatorLine.swift */,
+				F1386BF823CF1A7F00EF938A /* String + Slice.swift */,
+				F1B6487D23C2AFB300C097C7 /* UIColor + Colors.swift */,
 				F1B648A523C8A4CA00C097C7 /* Date.swift */,
-				F11E7C2823CA04A100C2DDD3 /* CustomDataSourse.swift */,
+				F11E7C2823CA04A100C2DDD3 /* ScheduleDataSource.swift */,
 				F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */,
-				F1386BF823CF1A7F00EF938A /* Substring.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -420,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F17EF7E023C2007600D36ED7 /* LaunchScreen.storyboard in Resources */,
+				F18AA43423D0FAA000A8FE8C /* JSON lesson.json in Resources */,
 				F17EF7DD23C2007600D36ED7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,23 +520,34 @@
 				F11E7C2B23CB8A3000C2DDD3 /* TableView.swift in Sources */,
 				F1386BFD23CF3D1500EF938A /* LessonModelDTO.swift in Sources */,
 				F1B6488823C3B1B200C097C7 /* SchedulePresentor.swift in Sources */,
-				F11E7C2923CA04A100C2DDD3 /* CustomDataSourse.swift in Sources */,
+				F11E7C2923CA04A100C2DDD3 /* ScheduleDataSource.swift in Sources */,
+				F133898A23CF798800496B62 /* Day.swift in Sources */,
 				F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */,
 				F1386C0023CF3DC600EF938A /* LessonModel.swift in Sources */,
 				F1B6488C23C3B1D000C097C7 /* CampusPresentor.swift in Sources */,
-				F1386BF923CF1A7F00EF938A /* Substring.swift in Sources */,
+				F1386BF923CF1A7F00EF938A /* String + Slice.swift in Sources */,
 				F1B6488A23C3B1C400C097C7 /* CampusViewController.swift in Sources */,
+				F18AA43C23D1F17400A8FE8C /* EndPoint.swift in Sources */,
 				F17EF7D123C2007500D36ED7 /* AppDelegate.swift in Sources */,
+				F18AA44723D2729B00A8FE8C /* JSONParameterEncoder.swift in Sources */,
 				F1B6489223C3B1F900C097C7 /* AboutPresentor.swift in Sources */,
 				F1B648A623C8A4CB00C097C7 /* Date.swift in Sources */,
+				F18AA44C23D27B6700A8FE8C /* APIError.swift in Sources */,
+				F18AA44A23D279BB00A8FE8C /* NetworkManager.swift in Sources */,
 				F1B6488623C3B1A700C097C7 /* ScheduleViewController.swift in Sources */,
+				F133898C23CF8E9D00496B62 /* UIVIew + SeparatorLine.swift in Sources */,
 				F1EF088A23C209F10042CDE4 /* AuthViewController.swift in Sources */,
+				F18AA43A23D1EF5A00A8FE8C /* NetworkRouter.swift in Sources */,
+				F18AA43E23D1F26F00A8FE8C /* HTTPMethod.swift in Sources */,
 				F1B648A323C7D73600C097C7 /* CustomSegmentedControl.swift in Sources */,
-				F1B6487E23C2AFB300C097C7 /* Colors.swift in Sources */,
+				F1B6487E23C2AFB300C097C7 /* UIColor + Colors.swift in Sources */,
+				F18AA43723D1ECA900A8FE8C /* EndPointType.swift in Sources */,
 				F1386BFB23CF2B4700EF938A /* ScheduleModelDTO.swift in Sources */,
 				F1B648A123C4FA7800C097C7 /* ScheduleCell.swift in Sources */,
 				F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */,
+				F18AA44523D271AB00A8FE8C /* ParameterEncoding.swift in Sources */,
 				F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */,
+				F18AA44323D26CCA00A8FE8C /* HTTPTask.swift in Sources */,
 				F1B6489023C3B1EB00C097C7 /* AboutViewController.swift in Sources */,
 				F1B6489E23C4C3B900C097C7 /* LessonCell.swift in Sources */,
 				F17EF7DB23C2007500D36ED7 /* MISiS.xcdatamodeld in Sources */,

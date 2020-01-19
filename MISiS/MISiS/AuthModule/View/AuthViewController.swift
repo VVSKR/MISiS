@@ -139,7 +139,8 @@ private extension AuthViewController {
     
     @objc
     func continueButtonPressed() {
-        presenter.tapOnTheButton()
+        print("Responce")
+        presenter.getSchedule(institution: "ИТАСУ", year: "4 курс", group: "БПИ-16-2", subGroup: 1)
     }
 }
 
@@ -161,10 +162,6 @@ extension AuthViewController: UITableViewDelegate, UITableViewDataSource {
 extension AuthViewController: AuthViewProtocol {
     
     
-    func setGreeting() {
-        // что-то отрабатало и мы обновляем view тут
-    }
-    
     func showKeyBoard(keyboardHeight: CGFloat) {
         UIView.animate(withDuration: 0.3) {
             self.continueButtonYConstraint.constant = -keyboardHeight - 16
@@ -181,6 +178,20 @@ extension AuthViewController: AuthViewProtocol {
             self.view.layoutIfNeeded()
         }
         tableView.isUserInteractionEnabled = true
+    }
+    
+    func successResponce() { // не уверен, что этот запрос нужен
+        print("SUCCESS")
+        // останавливать анимацию загрузки
+        presenter.pushToTabBar()
+    }
+    
+    func failureResponce() { // вызвать какой алерт и сообщать об ошибке
+        print("FAIL")
+    }
+    
+    func emptyResponce() { // вызвать какой алерт и говорить, что массив с распиниемпустой
+        
     }
     
 }
