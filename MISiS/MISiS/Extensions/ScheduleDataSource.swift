@@ -32,17 +32,28 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
         let lesson = lessons[indexPath.row]
         
         cell.set(lesson: lesson)
-        return cell
+        
         
         guard let lessonStartTime = getLessonData(time: lesson.begins),
             let lessonEndTime = getLessonData(time: lesson.ends) else { return cell }
+        print("--------\(indexPath.row)-------")
+        print(lessonStartTime.timeIntervalSinceNow < 0)
         
-        if lessonStartTime.timeIntervalSinceNow < 0 && lessonEndTime.timeIntervalSinceNow > 0 {
-            cell.lessonSubject.backgroundColor =  .lightBlue
+        print(lessonEndTime.timeIntervalSinceNow > 0)
+        
+        if lessonEndTime.timeIntervalSinceNow < 0 {
+            cell.contentView.alpha = 0.5
         } else {
-            cell.lessonSubject.backgroundColor =  .clear
+             cell.contentView.alpha = 1
         }
         
+        
+        if lessonStartTime.timeIntervalSinceNow < 0 && lessonEndTime.timeIntervalSinceNow > 0 {
+//            cell.lessonSubject.backgroundColor =  .lightBlue
+        } else {
+//            cell.lessonSubject.backgroundColor =  .clear
+        }
+        return cell
         
     }
     

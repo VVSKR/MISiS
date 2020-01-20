@@ -56,7 +56,6 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
     
     func getLessons(for day: Int) -> [LessonModel] {
         let week: Week = (currentWeek & 1) == 0 ? .upper : .lower
-        print(week.rawValue)
         //        let day = day.rawValue// можно добавить глобальную переменную верхней и нижней недели, чтобы перезагружать коллекцию только если меняется неделся (добавить релоуд в дид сет)
         return schedule.filter { $0.day == day && $0.week == week.rawValue }
     }
@@ -73,13 +72,16 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
     
     func setDataSourse(_ cell: ScheduleCell, indexPath: Int) {
         let schedule = getLessons(for: indexPath + 1) // Структура Day хуйнч какая-то, надо поменять
-        print("---------  \(indexPath) \(indexPath) \(indexPath) ---------")
-        print(schedule)
         cell.dataSource = ScheduleDataSource(lessons: schedule, currentWeek: currentWeek)
     }
     
     func chooseDay(to day: Date) { // переименовать
         
+        
+    }
+    
+    func makeTitle() {
+        let date = Date()
         
     }
     

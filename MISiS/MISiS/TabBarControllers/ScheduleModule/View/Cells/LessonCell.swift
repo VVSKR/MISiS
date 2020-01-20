@@ -40,9 +40,17 @@ class LessonCell: UITableViewCell {
         lessonStartTime.text = lesson.begins
         lessonFinishTime.text = lesson.ends
         lessonSubject.text = lesson.lessonName
-        lessonType.text = lesson.type
+        lessonType.text = lesson.typeString
         lessonPlace.text = lesson.location
         lessonTeacher.text = lesson.teacher
+        
+        switch lesson.type {
+        case .laboratory: colorLessonType.backgroundColor = .red
+        case .lecture: colorLessonType.backgroundColor = .blue
+        case .practical: colorLessonType.backgroundColor = .green
+        case .none: colorLessonType.backgroundColor = .gray
+            
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +83,7 @@ private extension LessonCell {
         numberOfLesson.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            numberOfLesson.leadingAnchor.constraint(equalTo: colorLessonType.leadingAnchor, constant: 15),
+            numberOfLesson.leadingAnchor.constraint(equalTo: colorLessonType.trailingAnchor, constant: 15),
             numberOfLesson.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         

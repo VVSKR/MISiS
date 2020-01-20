@@ -20,13 +20,25 @@ struct LessonModel {
     let begins: String
     let ends: String
     
-    public var type: String {
-        guard let type = kind.slice(from: "(", to: ")") else { return ""}
-        return type
+    public var type: Type? {
+        guard let type = kind.slice(from: "(", to: ")") else { return nil}
+        return Type(rawValue: type)
     }
     
+    public var typeString: String {
+        guard let type = type else { return ""}
+        switch type {
+        case .laboratory: return "Лабораторная"
+        case .lecture: return "Лекция"
+        case .practical: return "Практика"
+        }
+    }
+    
+    
     public var lessonName: String? {
-        return kind.replacingOccurrences(of: "(\(type))", with: "")
+        var lessonName = kind.replacingOccurrences(of: "(\(type!.rawValue))", with: "")
+        lessonName = lessonName.replacingOccurrences(of: "1, 2 п.г. ", with: "")
+        return lessonName
     }
     
     var dto: LessonModelDTO {

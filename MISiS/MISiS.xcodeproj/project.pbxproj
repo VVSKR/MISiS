@@ -31,6 +31,7 @@
 		F18AA44723D2729B00A8FE8C /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44623D2729B00A8FE8C /* JSONParameterEncoder.swift */; };
 		F18AA44A23D279BB00A8FE8C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44923D279BB00A8FE8C /* NetworkManager.swift */; };
 		F18AA44C23D27B6700A8FE8C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44B23D27B6700A8FE8C /* APIError.swift */; };
+		F18AA44E23D60A9700A8FE8C /* LessonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18AA44D23D60A9700A8FE8C /* LessonType.swift */; };
 		F1B6487E23C2AFB300C097C7 /* UIColor + Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6487D23C2AFB300C097C7 /* UIColor + Colors.swift */; };
 		F1B6488023C39F8C00C097C7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6487F23C39F8C00C097C7 /* Router.swift */; };
 		F1B6488623C3B1A700C097C7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B6488523C3B1A700C097C7 /* ScheduleViewController.swift */; };
@@ -88,6 +89,7 @@
 		F18AA44623D2729B00A8FE8C /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		F18AA44923D279BB00A8FE8C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F18AA44B23D27B6700A8FE8C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F18AA44D23D60A9700A8FE8C /* LessonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonType.swift; sourceTree = "<group>"; };
 		F1B6487D23C2AFB300C097C7 /* UIColor + Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Colors.swift"; sourceTree = "<group>"; };
 		F1B6487F23C39F8C00C097C7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F1B6488523C3B1A700C097C7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				F1386BF523CE676000EF938A /* ScheduleModel.swift */,
 				F1386BFF23CF3DC500EF938A /* LessonModel.swift */,
+				F18AA44D23D60A9700A8FE8C /* LessonType.swift */,
 				F133898923CF798800496B62 /* Day.swift */,
 				F18AA43323D0FAA000A8FE8C /* JSON lesson.json */,
 				F1386BFE23CF3D4100EF938A /* DTO */,
@@ -546,6 +549,7 @@
 				F1B648A123C4FA7800C097C7 /* ScheduleCell.swift in Sources */,
 				F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */,
 				F18AA44523D271AB00A8FE8C /* ParameterEncoding.swift in Sources */,
+				F18AA44E23D60A9700A8FE8C /* LessonType.swift in Sources */,
 				F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */,
 				F18AA44323D26CCA00A8FE8C /* HTTPTask.swift in Sources */,
 				F1B6489023C3B1EB00C097C7 /* AboutViewController.swift in Sources */,

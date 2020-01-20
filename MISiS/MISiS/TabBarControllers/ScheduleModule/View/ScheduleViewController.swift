@@ -41,10 +41,9 @@ class ScheduleViewController: UIViewController {
     }
     
     @objc func rightButtonPressed() {
-        collectionView.reloadData()
 //         let index = Date.getIndexOfDayForSegmented() // перенести в презентор
 //         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
-//        dateField.becomeFirstResponder()
+        dateField.becomeFirstResponder()
     }
 }
 
@@ -117,9 +116,13 @@ private extension ScheduleViewController {
     
     @objc
     func doneAction() {
-        let currentDate = datePicker.date
-        datePicker.date = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)!
-//        view.endEditing(true)
+//        let currentDate = datePicker.date
+//        datePicker.date = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)!
+        
+        title = Date.makeTitle(datePicker.date)()
+        presenter.setCurrentWeek(for: datePicker.date)
+        collectionView.reloadData()
+        view.endEditing(true)
     }
     
     func setTapGesture() {
