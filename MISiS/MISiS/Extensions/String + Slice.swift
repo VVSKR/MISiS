@@ -9,8 +9,8 @@
 import Foundation
 
 extension String {
-    func slice(from: String, to: String) -> String? {
-        return (range(of: from, options: .backwards)?.upperBound).flatMap { substringFrom in
+    func slice(from: String, to: String, with options: String.CompareOptions = []) -> String? {
+        return (range(of: from, options: options)?.upperBound).flatMap { substringFrom in
             (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
                 String(self[substringFrom..<substringTo])
             }

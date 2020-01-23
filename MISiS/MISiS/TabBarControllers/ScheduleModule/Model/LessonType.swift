@@ -12,4 +12,12 @@ enum Type: String {
     case practical = "Практические"
     case laboratory = "Лабораторные"
     case lecture = "Лекционные"
+    
+    var typeName: String {
+        switch self {
+        case .laboratory: return "Лабораторная"
+        case .lecture: return "Лекция"
+        case .practical: return "Практика"
+        }
+    }
 }

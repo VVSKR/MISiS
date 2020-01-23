@@ -15,8 +15,12 @@ protocol AuthViewProtocol: class { // подписвается view
     func successResponce()
     func failureResponce()
     func emptyResponce()
+    
+    func shakeInstitution()
+    func shakeGroup()
+    
     // функции которые должны срабатывть в view
-    // видимо надо прям все сюда закидывать
+    
 }
 
 protocol AuthViewPresenterProtocol: class { // подписывается presentor
@@ -26,9 +30,8 @@ protocol AuthViewPresenterProtocol: class { // подписывается presen
     
     func addKeyboardNotifications()
     func pushToTabBar()
-    // тут можно передать сами данные, делать запрос в сеть, дожидаться данные и только потом переходить на следующий экран или прост сразу переходить на след экран и там уэе делать запрос в сеть
-    
-    func getSchedule(institution: String, year: String, group: String, subGroup: Int)
+    func getSchedule(requestModel: ScheduleRequestModel)
+    func isDataValid(institutionName: String?, groupName: String?)
     
     
     // функции которые вызываются в view чтобы сработада бизнес логика
@@ -40,16 +43,18 @@ class AuthPresentor: AuthViewPresenterProtocol {
     weak var view: AuthViewProtocol?
     var router: RouterProtocol?
     let networkManager: NetworkManager
-    var scheduleModel: ScheduleModel? = ScheduleModel(dto: ScheduleModelDTO(success: true, schedule: nil))
+    var scheduleModel: ScheduleModel?
+    var scheduleRequestModel: ScheduleRequestModel?
+    
+    var isBachelor: Bool = true
     
     required init(view: AuthViewProtocol, networkManager: NetworkManager, router: RouterProtocol) {
         self.view = view
         self.networkManager = networkManager
         self.router = router
     }
-    
-    func getSchedule(institution: String, year: String, group: String, subGroup: Int) {
-        networkManager.getEvents(institution: institution, year: year, group: group, subGroup: subGroup) { [weak self] result in
+    func getSchedule(requestModel: ScheduleRequestModel) {
+        networkManager.getEvents(institution: requestModel.institution, year: requestModel.year, group: requestModel.group, subGroup: requestModel.subgroup) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let schedule):
@@ -68,6 +73,8 @@ class AuthPresentor: AuthViewPresenterProtocol {
     func pushToTabBar() { // запрос к апи сделать
         router?.pushToMainTabBar(schedule: scheduleModel!.schedule)
     }
+    
+    // MARK: - KeyBoard Notifications
     
     func addKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -94,5 +101,63 @@ class AuthPresentor: AuthViewPresenterProtocol {
                 view?.showKeyBoard(keyboardHeight: keyboardHeight)
             }
         }
+    }
+    
+    // MARK: - Data validation
+    
+    func isDataValid(institutionName: String?, groupName: String?) { // переименовать
+        guard let institutionName = institutionName, checkInstitutionValid(text: institutionName) else {
+            view?.shakeInstitution(); return }
+        guard let groupName = groupName,
+            checkGroupNameValid(text: groupName),
+            let year = setCourse(groupName: groupName) else {
+            view?.shakeGroup(); return }
+        let scheduleRequest = ScheduleRequestModel(institution: institutionName, year: year, group: groupName, subgroup: 1)
+        print(scheduleRequest)
+            // вызывать анимацию загрузки в view и после анимации вызывать getSchedule
+        getSchedule(requestModel: scheduleRequest)
+        
+    }
+    
+    private func setCourse(groupName: String) -> String? {
+        print(groupName)
+        guard let groupString = groupName.slice(from: "-", to: "-") else { return nil  }
+        print(groupString)
+        guard let groupInt = Int(groupString) else { return nil }
+        if isBachelor {
+            let group = CourseBachelor(rawValue: groupInt)
+            return group?.group
+        } else {
+            let group = CourseMaga(rawValue: groupInt)
+            return group?.group
+        }
+    }
+    
+    
+    
+    private func checkInstitutionValid(text: String?) -> Bool {
+        guard let text = text else { return false }
+        return text.count >= 3 && text.count <= 6 ? true : false
+    }
+    
+    private func checkGroupNameValid(text: String?) -> Bool {
+        guard let text = text else { return false }
+        let stringComponents = text.components(separatedBy: "-")
+        let validComponents = stringComponents.filter { $0.isEmpty }.isEmpty
+        guard stringComponents.count >= 3, validComponents else { return false }
+        
+        for char in stringComponents[0] {
+            guard char.isLetter else { return false }
+        }
+        
+        for firstNumber in stringComponents[1] {
+            guard firstNumber.isNumber else { return false }
+        }
+        
+        for secondNumber in stringComponents[2] {
+            guard secondNumber.isNumber else { return false }
+        }
+        
+        return true
     }
 }

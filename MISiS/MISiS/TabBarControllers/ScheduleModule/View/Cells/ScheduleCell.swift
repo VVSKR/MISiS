@@ -8,14 +8,18 @@
 
 import UIKit
 
-class ScheduleCell: UICollectionViewCell {
+protocol CollectionCellProtocol {
+    static var reuseID: String { get }
+}
+
+class ScheduleCell: UICollectionViewCell, CollectionCellProtocol {
     
     static let reuseID = "ScheduleCell"
     
     var dataSource: ScheduleDataSource? {
         didSet {
             tableView.dataSource = dataSource
-             tableView.reloadData()
+            tableView.reloadData() // разобраться с этим
         }
     }
     

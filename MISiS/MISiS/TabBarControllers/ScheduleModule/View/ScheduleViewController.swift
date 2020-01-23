@@ -30,8 +30,6 @@ class ScheduleViewController: UIViewController {
         setCollectionView()
         setDatePicker()
         setTapGesture()
-//        presenter.setCurrentWeek(for: Date()) // возможно то надо переносить в презентов, но хз
-        title = Date().makeTitle() // перенести в презентор
     
           
         
@@ -45,6 +43,8 @@ class ScheduleViewController: UIViewController {
 //         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
         dateField.becomeFirstResponder()
     }
+    
+    
 }
 
 // MARK: - Setup view
@@ -116,12 +116,12 @@ private extension ScheduleViewController {
     
     @objc
     func doneAction() {
+        // следующая неделя
 //        let currentDate = datePicker.date
-//        datePicker.date = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)!
-        
-        title = Date.makeTitle(datePicker.date)()
+//        datePicker.date = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)! //
+        presenter.setTitle(for: datePicker.date)
         presenter.setCurrentWeek(for: datePicker.date)
-        collectionView.reloadData()
+        reloadCollectionView()
         view.endEditing(true)
     }
     
@@ -179,6 +179,10 @@ extension ScheduleViewController: ScheduleViewProtocol {
     
     func setPositionSegmentControll(position: CGFloat) {
         segmentControll.setIndex(position: position)
+    }
+    
+    func reloadCollectionView() {
+        collectionView.reloadData()
     }
     
     

@@ -21,17 +21,13 @@ struct LessonModel {
     let ends: String
     
     public var type: Type? {
-        guard let type = kind.slice(from: "(", to: ")") else { return nil}
+        guard let type = kind.slice(from: "(", to: ")", with: .backwards) else { return nil }
         return Type(rawValue: type)
     }
     
     public var typeString: String {
         guard let type = type else { return ""}
-        switch type {
-        case .laboratory: return "Лабораторная"
-        case .lecture: return "Лекция"
-        case .practical: return "Практика"
-        }
+        return type.typeName
     }
     
     

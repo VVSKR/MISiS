@@ -36,10 +36,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
         
         guard let lessonStartTime = getLessonData(time: lesson.begins),
             let lessonEndTime = getLessonData(time: lesson.ends) else { return cell }
-        print("--------\(indexPath.row)-------")
-        print(lessonStartTime.timeIntervalSinceNow < 0)
-        
-        print(lessonEndTime.timeIntervalSinceNow > 0)
+       
         
         if lessonEndTime.timeIntervalSinceNow < 0 {
             cell.contentView.alpha = 0.5
@@ -47,14 +44,22 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
              cell.contentView.alpha = 1
         }
         
-        
+         // текущий урок
         if lessonStartTime.timeIntervalSinceNow < 0 && lessonEndTime.timeIntervalSinceNow > 0 {
-//            cell.lessonSubject.backgroundColor =  .lightBlue
+            cell.lessonSubject.backgroundColor =  .lightBlue
         } else {
-//            cell.lessonSubject.backgroundColor =  .clear
+            cell.lessonSubject.backgroundColor =  .clear
         }
         return cell
         
+    }
+    
+    func setAlphaCell(_ cell: CollectionCellProtocol) {
+        // перенести сюда куда сверху
+    }
+    
+    func setCurrentLesson(_ cell: CollectionCellProtocol) {
+        // перенести сюда куда сверху
     }
     
     

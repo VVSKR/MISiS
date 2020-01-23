@@ -48,6 +48,7 @@
 		F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9FA4A23C2A6030031ECE6 /* VIew.swift */; };
 		F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF088723C209820042CDE4 /* AuthPresentor.swift */; };
 		F1EF088A23C209F10042CDE4 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF088923C209F00042CDE4 /* AuthViewController.swift */; };
+		F1F14EFE23D7C2360073A5BF /* ScheduleRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F14EFD23D7C2360073A5BF /* ScheduleRequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		F1D9FA4A23C2A6030031ECE6 /* VIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIew.swift; sourceTree = "<group>"; };
 		F1EF088723C209820042CDE4 /* AuthPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresentor.swift; sourceTree = "<group>"; };
 		F1EF088923C209F00042CDE4 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		F1F14EFD23D7C2360073A5BF /* ScheduleRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +399,7 @@
 			children = (
 				F1EF088D23C20A190042CDE4 /* View */,
 				F1EF088C23C20A090042CDE4 /* Presentor */,
+				F1F14EFC23D7C2020073A5BF /* Model */,
 			);
 			path = AuthModule;
 			sourceTree = "<group>";
@@ -415,6 +418,14 @@
 				F1EF088923C209F00042CDE4 /* AuthViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F1F14EFC23D7C2020073A5BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1F14EFD23D7C2360073A5BF /* ScheduleRequestModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -550,6 +561,7 @@
 				F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */,
 				F18AA44523D271AB00A8FE8C /* ParameterEncoding.swift in Sources */,
 				F18AA44E23D60A9700A8FE8C /* LessonType.swift in Sources */,
+				F1F14EFE23D7C2360073A5BF /* ScheduleRequestModel.swift in Sources */,
 				F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */,
 				F18AA44323D26CCA00A8FE8C /* HTTPTask.swift in Sources */,
 				F1B6489023C3B1EB00C097C7 /* AboutViewController.swift in Sources */,

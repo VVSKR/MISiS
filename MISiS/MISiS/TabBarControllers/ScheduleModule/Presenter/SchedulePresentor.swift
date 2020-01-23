@@ -13,6 +13,7 @@ protocol ScheduleViewProtocol: class {
     func currentPosition() -> CGFloat
     func setPositionSegmentControll(position: CGFloat)
     func setTitle(_ title: String?)
+    func reloadCollectionView()
     // функции которые должны срабатывть в view
     // видимо надо прям все сюда закидывать
 }
@@ -25,6 +26,7 @@ protocol ScheduleViewPresenterProtocol: class {
     func setCurrentWeek(for date: Date)
     func returnCurrentWeek() -> Int
     func setDataSourse(_ cell: ScheduleCell, indexPath: Int)
+    func setTitle(for date: Date)
     // функции которые вызываются в view чтобы сработада бизнес логика
 }
 
@@ -42,11 +44,11 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
         self.router = router
         self.schedule = schedule
         setCurrentWeek(for: Date())
-        setTitle()
+        setTitle(for: Date())
     }
     
-    func setTitle() {
-        view?.setTitle(Date().makeTitle())
+    func setTitle(for date: Date) {
+        view?.setTitle(date.makeTitle())
     }
     
     func setSegmentPosition() {
@@ -79,11 +81,4 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
         
         
     }
-    
-    func makeTitle() {
-        let date = Date()
-        
-    }
-    
-    
 }

@@ -22,3 +22,32 @@ enum Week: Int { // not use
     case upper = 1
     case lower = 0
 }
+
+
+enum CourseBachelor: Int {
+    case first = 19
+    case second = 18
+    case third = 17
+    case fourth = 16
+    
+    var group: String {
+        switch self {
+        case .first: return "1 курс"
+        case .second: return "2 курс"
+        case .third: return "3 курс"
+        case .fourth: return "4 курс"
+        }
+    }
+}
+
+enum CourseMaga: Int {
+    case first = 19
+    case second = 18
+    
+    var group: String {
+        switch self {
+        case .first: return "1 курс магистратура"
+        case .second: return "2 курс магистратура"
+        }
+    }
+}

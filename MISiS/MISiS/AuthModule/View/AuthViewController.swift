@@ -14,7 +14,9 @@ class AuthViewController: UIViewController {
     
     private let logoImageView = UIImageView(image: UIImage(named: "mpei_short_logo"))
     private let greetingsLabel = UILabel()
+    private var institutionTextField = UITextField()
     private var groupTextField = UITextField()
+    
     private var tableView = UITableView()
     private var continueButton = UIButton()
     
@@ -28,7 +30,10 @@ class AuthViewController: UIViewController {
         
         setLogo()
         setGreetingsLabel()
-        setGroupTextField()
+        
+        setInstitutionTextField()
+        setCourseTextField()
+        
         setTableView()
         setContinueButton()
         
@@ -73,9 +78,10 @@ private extension AuthViewController {
         ])
     }
     
-    func setGroupTextField() {
+    func setCourseTextField() {
         groupTextField.placeholder = "Введите группу, например: БПИ-16-2"
         groupTextField.textAlignment = .left
+//        groupTextField.keyboardType = .numberPad
         //        groupField.delegate = self
         
         groupTextField.borderStyle = .roundedRect
@@ -86,7 +92,7 @@ private extension AuthViewController {
         groupTextField.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            groupTextField.topAnchor.constraint(equalTo: greetingsLabel.bottomAnchor, constant: 16),
+            groupTextField.topAnchor.constraint(equalTo: institutionTextField.bottomAnchor, constant: 16),
             groupTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
             groupTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
             groupTextField.heightAnchor.constraint(equalToConstant: 54),
@@ -95,6 +101,29 @@ private extension AuthViewController {
         
         
     }
+    
+    func setInstitutionTextField() {
+           institutionTextField.placeholder = "Введите институт, например: ИТАСУ"
+           institutionTextField.textAlignment = .left
+           //        groupField.delegate = self
+           
+           institutionTextField.borderStyle = .roundedRect
+           institutionTextField.returnKeyType = .continue
+           institutionTextField.autocorrectionType = .no
+           
+           view.addSubview(institutionTextField)
+           institutionTextField.translatesAutoresizingMaskIntoConstraints = false
+           
+           NSLayoutConstraint.activate([
+               institutionTextField.topAnchor.constraint(equalTo: greetingsLabel.bottomAnchor, constant: 16),
+               institutionTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
+               institutionTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
+               institutionTextField.heightAnchor.constraint(equalToConstant: 54),
+               institutionTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+           ])
+           
+           
+       }
     
     func setTableView() {
         tableView.dataSource = self
@@ -109,7 +138,7 @@ private extension AuthViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: groupTextField.bottomAnchor, constant: 22),
+            tableView.topAnchor.constraint(equalTo: institutionTextField.bottomAnchor, constant: 22),
             tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
@@ -137,11 +166,22 @@ private extension AuthViewController {
         continueButton.configure()
     }
     
+    
+    // MARK: - URL session
     @objc
     func continueButtonPressed() {
         print("Responce")
-        presenter.getSchedule(institution: "ИТАСУ", year: "4 курс", group: "БПИ-16-2", subGroup: 1)
+        presenter.isDataValid(institutionName: institutionTextField.text, groupName: groupTextField.text)
+        
+        
+
+//        presenter.getSchedule(requestModel: ScheduleRequestModel(institution: "ИТАСУ", year: "4 курс", group: "БПИ-16-2", subgroup: 1))
     }
+    
+    func setCourse() {
+        
+    }
+   
 }
 
 // MARK: - TableView Delegate , DataSourse
@@ -160,6 +200,7 @@ extension AuthViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - AuthView Protocol
 extension AuthViewController: AuthViewProtocol {
+    
     
     
     func showKeyBoard(keyboardHeight: CGFloat) {
@@ -190,8 +231,16 @@ extension AuthViewController: AuthViewProtocol {
         print("FAIL")
     }
     
-    func emptyResponce() { // вызвать какой алерт и говорить, что массив с распиниемпустой
+    func emptyResponce() { // вызвать какой алерт и говорить, что массив с распинием пустой
         
+    }
+    
+    func shakeInstitution() {
+        institutionTextField.shake()
+    }
+    
+    func shakeGroup() {
+        groupTextField.shake()
     }
     
 }
