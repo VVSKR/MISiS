@@ -14,29 +14,37 @@ class AuthViewController: UIViewController {
     
     private let logoImageView = UIImageView(image: UIImage(named: "mpei_short_logo"))
     private let greetingsLabel = UILabel()
-    private var institutionTextField = UITextField()
-    private var groupTextField = UITextField()
+    private var selectInstitutionButton = UIButton()
+    private var groupTextField: UITextField!
     
     private var tableView = UITableView()
     private var continueButton = UIButton()
+    private var bottomList: BottomListView!
     
     private lazy var continueButtonYConstraint = continueButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
     private lazy var safeArea = view.safeAreaLayoutGuide
     
     
+    //MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+//        view.backgroundColor = UIColor(patternImage: UIImage(named: "misis1")!)
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "misis1")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         
         setLogo()
         setGreetingsLabel()
         
-        setInstitutionTextField()
+        //        setInstitutionTextField()
+        setSelectInstitutionButton()
         setCourseTextField()
         
         setTableView()
         setContinueButton()
-        
+        setGestureRecognizer()
         presenter.addKeyboardNotifications()
     }
 }
@@ -77,54 +85,55 @@ private extension AuthViewController {
             greetingsLabel.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
         ])
     }
-    
-    func setCourseTextField() {
-        groupTextField.placeholder = "Введите группу, например: БПИ-16-2"
-        groupTextField.textAlignment = .left
-//        groupTextField.keyboardType = .numberPad
-        //        groupField.delegate = self
+    // MARK: - Text Field
+    func setSelectInstitutionButton() {
+//
+        selectInstitutionButton.setTitle(" Выберите институт", for: .normal)
+        selectInstitutionButton.setTitleColor(UIColor.gray.withAlphaComponent(0.6), for: .normal)
+        selectInstitutionButton.contentHorizontalAlignment = .left
         
-        groupTextField.borderStyle = .roundedRect
-        groupTextField.returnKeyType = .continue
-        groupTextField.autocorrectionType = .no
+        selectInstitutionButton.addTarget(self, action: #selector(tapInstitutionSelectButton), for: .touchUpInside)
         
-        view.addSubview(groupTextField)
-        groupTextField.translatesAutoresizingMaskIntoConstraints = false
+        selectInstitutionButton.addSeparator(at: .bottom, color: .lightBlue, weight: 1)
+        
+        view.addSubview(selectInstitutionButton)
+        selectInstitutionButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            groupTextField.topAnchor.constraint(equalTo: institutionTextField.bottomAnchor, constant: 16),
-            groupTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
-            groupTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
-            groupTextField.heightAnchor.constraint(equalToConstant: 54),
-            groupTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+            selectInstitutionButton.topAnchor.constraint(equalTo: greetingsLabel.bottomAnchor, constant: 25),
+            selectInstitutionButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
+            selectInstitutionButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
+            selectInstitutionButton.heightAnchor.constraint(equalToConstant: 45),
+            selectInstitutionButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
         ])
-        
-        
     }
     
-    func setInstitutionTextField() {
-           institutionTextField.placeholder = "Введите институт, например: ИТАСУ"
-           institutionTextField.textAlignment = .left
-           //        groupField.delegate = self
-           
-           institutionTextField.borderStyle = .roundedRect
-           institutionTextField.returnKeyType = .continue
-           institutionTextField.autocorrectionType = .no
-           
-           view.addSubview(institutionTextField)
-           institutionTextField.translatesAutoresizingMaskIntoConstraints = false
-           
-           NSLayoutConstraint.activate([
-               institutionTextField.topAnchor.constraint(equalTo: greetingsLabel.bottomAnchor, constant: 16),
-               institutionTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
-               institutionTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
-               institutionTextField.heightAnchor.constraint(equalToConstant: 54),
-               institutionTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
-           ])
-           
-           
-       }
     
+    func setCourseTextField() {
+        groupTextField = UITextField()
+        groupTextField.backgroundColor = .clear
+        
+        groupTextField.borderStyle = .none
+        groupTextField.placeholder = " Введите группу, например: БПИ-16-2"
+        groupTextField.tintColor = .black
+        
+        groupTextField.addSeparator(at: .bottom, color: .lightBlue, weight: 1)
+        groupTextField.returnKeyType = .continue
+        groupTextField.autocorrectionType = .no
+
+        view.addSubview(groupTextField)
+        groupTextField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            groupTextField.topAnchor.constraint(equalTo: selectInstitutionButton.bottomAnchor, constant: 25),
+            groupTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
+            groupTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
+            groupTextField.heightAnchor.constraint(equalToConstant: 45),
+            groupTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+        ])
+    }
+    
+    
+    // MARK: - Table view (delete)
     func setTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -138,7 +147,7 @@ private extension AuthViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: institutionTextField.bottomAnchor, constant: 22),
+            tableView.topAnchor.constraint(equalTo: groupTextField.bottomAnchor, constant: 22),
             tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
@@ -166,22 +175,42 @@ private extension AuthViewController {
         continueButton.configure()
     }
     
+    // MARK: - Tap Gesture
+    func setGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandle(tap:)))
+        tap.cancelsTouchesInView = false
+        self.continueButton.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(tap)
+    }
     
-    // MARK: - URL session
+    @objc func tapGestureHandle(tap: UITapGestureRecognizer) {
+        guard view.hitTest(tap.location(in: self.view), with: nil) as? UIButton == nil else { return }
+        view.endEditing(true)
+    }
+    
+    @objc
+    func tapInstitutionSelectButton() {
+        
+        bottomList = BottomListView(frame: view.frame)
+        bottomList.set(list: ["ИТАСУ", "ИБО", "ИНМиН", "МГИ", "ЭУПП", "ЭкоТех"])
+        bottomList.delegate = self
+        view.addSubview(bottomList)
+    }
+    
+    
+    // MARK: - Continue Button
     @objc
     func continueButtonPressed() {
-        print("Responce")
-        presenter.isDataValid(institutionName: institutionTextField.text, groupName: groupTextField.text)
+        print("continiu")
+        presenter.isDataValid(institutionName: selectInstitutionButton.titleLabel!.text!,
+                              groupName: groupTextField.text)
         
-        
-
-//        presenter.getSchedule(requestModel: ScheduleRequestModel(institution: "ИТАСУ", year: "4 курс", group: "БПИ-16-2", subgroup: 1))
     }
     
     func setCourse() {
         
     }
-   
+    
 }
 
 // MARK: - TableView Delegate , DataSourse
@@ -200,8 +229,6 @@ extension AuthViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - AuthView Protocol
 extension AuthViewController: AuthViewProtocol {
-    
-    
     
     func showKeyBoard(keyboardHeight: CGFloat) {
         UIView.animate(withDuration: 0.3) {
@@ -235,14 +262,29 @@ extension AuthViewController: AuthViewProtocol {
         
     }
     
+    func changeInstiotutionText(_ institution: String) {
+        selectInstitutionButton.setTitle(institution, for: .normal)
+        selectInstitutionButton.setTitleColor(.black, for: .normal)
+    }
+    
     func shakeInstitution() {
-        institutionTextField.shake()
+        selectInstitutionButton.shake()
     }
     
     func shakeGroup() {
         groupTextField.shake()
     }
     
+}
+ // MARK: - BottomListViewDelegate
+extension AuthViewController: BottomListViewDelegate {
+    func selectRow(item: String) {
+        presenter.setInstitution(item)
+    }
+    
+    func dissmissList() {
+        bottomList.removeFromSuperview()
+    }
 }
 
 

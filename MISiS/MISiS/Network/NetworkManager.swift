@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-    func getEvents(institution: String, year: String, group: String, subGroup: Int, completion: @escaping (Result<ScheduleModel, Error>) -> ())
+    func getSchedule(institution: String, year: String, group: String, subGroup: Int, completion: @escaping (Result<ScheduleModel, Error>) -> ())
 }
 
 struct NetworkManager: NetworkManagerProtocol {
@@ -17,7 +17,7 @@ struct NetworkManager: NetworkManagerProtocol {
     private let router = RouterNetwork<NetworkEnvironment>(session: URLSession.shared)
     private let token = "a1f1f38c-df6e-494e-a399-82e85fb618af"
     
-    public func getEvents(institution: String, year: String, group: String, subGroup: Int, completion: @escaping (Result<ScheduleModel, Error>) -> ()) {
+    public func getSchedule(institution: String, year: String, group: String, subGroup: Int, completion: @escaping (Result<ScheduleModel, Error>) -> ()) {
         
         router.request(.scheduleAPI(token: token, institution: institution, year: year, group: group, subgroup: subGroup)) { (data, responce, error) in
             
@@ -39,6 +39,4 @@ struct NetworkManager: NetworkManagerProtocol {
             }
         }
     }
-    
-    
 }

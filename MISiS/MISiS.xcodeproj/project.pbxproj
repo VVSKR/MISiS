@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11BB1D323EEC77400F21516 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BB1D223EEC77400F21516 /* CustomTextField.swift */; };
 		F11E7C2923CA04A100C2DDD3 /* ScheduleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E7C2823CA04A100C2DDD3 /* ScheduleDataSource.swift */; };
 		F11E7C2B23CB8A3000C2DDD3 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */; };
 		F133898A23CF798800496B62 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F133898923CF798800496B62 /* Day.swift */; };
@@ -46,6 +47,7 @@
 		F1B648A623C8A4CB00C097C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B648A523C8A4CA00C097C7 /* Date.swift */; };
 		F1D9FA4923C26A9C0031ECE6 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */; };
 		F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9FA4A23C2A6030031ECE6 /* VIew.swift */; };
+		F1DE00CB23DEC67B00A6B9C0 /* BottomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DE00CA23DEC67B00A6B9C0 /* BottomListView.swift */; };
 		F1EF088823C209820042CDE4 /* AuthPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF088723C209820042CDE4 /* AuthPresentor.swift */; };
 		F1EF088A23C209F10042CDE4 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EF088923C209F00042CDE4 /* AuthViewController.swift */; };
 		F1F14EFE23D7C2360073A5BF /* ScheduleRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F14EFD23D7C2360073A5BF /* ScheduleRequestModel.swift */; };
@@ -62,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11BB1D223EEC77400F21516 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F11E7C2823CA04A100C2DDD3 /* ScheduleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataSource.swift; sourceTree = "<group>"; };
 		F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F133898923CF798800496B62 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		F1B648A523C8A4CA00C097C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F1D9FA4823C26A9C0031ECE6 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		F1D9FA4A23C2A6030031ECE6 /* VIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIew.swift; sourceTree = "<group>"; };
+		F1DE00CA23DEC67B00A6B9C0 /* BottomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomListView.swift; sourceTree = "<group>"; };
 		F1EF088723C209820042CDE4 /* AuthPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresentor.swift; sourceTree = "<group>"; };
 		F1EF088923C209F00042CDE4 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		F1F14EFD23D7C2360073A5BF /* ScheduleRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestModel.swift; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 				F1B648A523C8A4CA00C097C7 /* Date.swift */,
 				F11E7C2823CA04A100C2DDD3 /* ScheduleDataSource.swift */,
 				F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */,
+				F11BB1D223EEC77400F21516 /* CustomTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				F1EF088923C209F00042CDE4 /* AuthViewController.swift */,
+				F1DE00CA23DEC67B00A6B9C0 /* BottomListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -534,7 +540,9 @@
 				F11E7C2B23CB8A3000C2DDD3 /* TableView.swift in Sources */,
 				F1386BFD23CF3D1500EF938A /* LessonModelDTO.swift in Sources */,
 				F1B6488823C3B1B200C097C7 /* SchedulePresentor.swift in Sources */,
+				F1DE00CB23DEC67B00A6B9C0 /* BottomListView.swift in Sources */,
 				F11E7C2923CA04A100C2DDD3 /* ScheduleDataSource.swift in Sources */,
+				F11BB1D323EEC77400F21516 /* CustomTextField.swift in Sources */,
 				F133898A23CF798800496B62 /* Day.swift in Sources */,
 				F1D9FA4B23C2A6030031ECE6 /* VIew.swift in Sources */,
 				F1386C0023CF3DC600EF938A /* LessonModel.swift in Sources */,

@@ -16,8 +16,10 @@ protocol AuthViewProtocol: class { // подписвается view
     func failureResponce()
     func emptyResponce()
     
-    func shakeInstitution()
     func shakeGroup()
+    func shakeInstitution()
+    
+    func changeInstiotutionText(_ institution: String)
     
     // функции которые должны срабатывть в view
     
@@ -31,8 +33,9 @@ protocol AuthViewPresenterProtocol: class { // подписывается presen
     func addKeyboardNotifications()
     func pushToTabBar()
     func getSchedule(requestModel: ScheduleRequestModel)
-    func isDataValid(institutionName: String?, groupName: String?)
+    func isDataValid(institutionName: String, groupName: String?)
     
+    func setInstitution(_ institution: String) 
     
     // функции которые вызываются в view чтобы сработада бизнес логика
 }
@@ -46,7 +49,7 @@ class AuthPresentor: AuthViewPresenterProtocol {
     var scheduleModel: ScheduleModel?
     var scheduleRequestModel: ScheduleRequestModel?
     
-    var isBachelor: Bool = true
+    var isBachelor: Bool = true // бакалавр или нет
     
     required init(view: AuthViewProtocol, networkManager: NetworkManager, router: RouterProtocol) {
         self.view = view
@@ -54,11 +57,11 @@ class AuthPresentor: AuthViewPresenterProtocol {
         self.router = router
     }
     func getSchedule(requestModel: ScheduleRequestModel) {
-        networkManager.getEvents(institution: requestModel.institution, year: requestModel.year, group: requestModel.group, subGroup: requestModel.subgroup) { [weak self] result in
+        networkManager.getSchedule(institution: requestModel.institution, year: requestModel.year, group: requestModel.group, subGroup: requestModel.subgroup) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let schedule):
-                    guard schedule.success else { self?.view?.emptyResponce(); return }
+                    guard schedule.success,schedule.schedule.count != 0 else { self?.view?.shakeGroup(); return }
                     self?.scheduleModel = schedule
                     self?.view?.successResponce()
                 case .failure(_):
@@ -67,8 +70,6 @@ class AuthPresentor: AuthViewPresenterProtocol {
             }
         }
     }
-    
-    
     
     func pushToTabBar() { // запрос к апи сделать
         router?.pushToMainTabBar(schedule: scheduleModel!.schedule)
@@ -105,13 +106,10 @@ class AuthPresentor: AuthViewPresenterProtocol {
     
     // MARK: - Data validation
     
-    func isDataValid(institutionName: String?, groupName: String?) { // переименовать
-        guard let institutionName = institutionName, checkInstitutionValid(text: institutionName) else {
-            view?.shakeInstitution(); return }
-        guard let groupName = groupName,
-            checkGroupNameValid(text: groupName),
-            let year = setCourse(groupName: groupName) else {
-            view?.shakeGroup(); return }
+    func isDataValid(institutionName: String, groupName: String?) { // переименовать
+        guard institutionName.count < 10 else { view?.shakeInstitution(); return }
+        guard let groupName = groupName, checkGroupNameValid(text: groupName),
+            let year = setCourse(groupName: groupName) else { view?.shakeGroup(); return }
         let scheduleRequest = ScheduleRequestModel(institution: institutionName, year: year, group: groupName, subgroup: 1)
         print(scheduleRequest)
             // вызывать анимацию загрузки в view и после анимации вызывать getSchedule
@@ -134,12 +132,6 @@ class AuthPresentor: AuthViewPresenterProtocol {
     }
     
     
-    
-    private func checkInstitutionValid(text: String?) -> Bool {
-        guard let text = text else { return false }
-        return text.count >= 3 && text.count <= 6 ? true : false
-    }
-    
     private func checkGroupNameValid(text: String?) -> Bool {
         guard let text = text else { return false }
         let stringComponents = text.components(separatedBy: "-")
@@ -160,4 +152,11 @@ class AuthPresentor: AuthViewPresenterProtocol {
         
         return true
     }
+    
+    // MARK: - set institution
+    
+    func setInstitution(_ institution: String) {
+        view?.changeInstiotutionText(institution)
+    }
 }
+
