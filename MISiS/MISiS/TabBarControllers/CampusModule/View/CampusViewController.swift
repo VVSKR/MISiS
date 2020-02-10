@@ -7,19 +7,38 @@
 //
 
 import UIKit
+import MapKit
 
 class CampusViewController: UIViewController {
-
+    
     var presenter: CampusViewPresenterProtocol!
+    
+    var currentAnnotation = MKPointAnnotation()
+    let tilesOverlay = DGSTileOverlay()
+//    lazy var locationManager = UserLocation()
+    private lazy var layout = view.safeAreaLayoutGuide
+    var mapView = MKMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setMapView()
+       
+    }
+    
+    func setMapView() {
+        self.view.addSubview(mapView)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            mapView.leadingAnchor.constraint(equalTo: layout.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: layout.trailingAnchor),
+            mapView.topAnchor.constraint(equalTo: view.topAnchor),
+            mapView.bottomAnchor.constraint(equalTo: layout.bottomAnchor)
+        ])
     }
     
     
-
+    
 }
 
 extension CampusViewController: CampusViewProtocol{

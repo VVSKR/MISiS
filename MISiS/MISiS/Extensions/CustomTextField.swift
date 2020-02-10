@@ -8,28 +8,21 @@
 
 import UIKit
 
-extension UITextField {
+class CustomSizedTextField: UITextField {
     
-    public static func logIn(with placeholder: String) -> UITextField {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .white
-        
-        textField.tintColor = .black
-        textField.font = UIFont.systemFont(ofSize: 18)
-        textField.placeholder = " " + placeholder
-        
-        textField.borderStyle = .none
-        textField.layer.backgroundColor = UIColor.white.cgColor
-        
-        textField.layer.masksToBounds = false
-        textField.layer.shadowColor = UIColor.lightBlue.cgColor
-        textField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        textField.layer.shadowOpacity = 5.0
-        textField.layer.shadowRadius = 0.0
-        
-        return textField
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 7, dy: 0)
     }
-    
-   
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 7, dy: 0)
+    }
+
+}
+
+class CustomSizedButton: UIButton {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
+    }
 }

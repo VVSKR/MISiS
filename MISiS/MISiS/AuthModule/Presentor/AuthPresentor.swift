@@ -72,7 +72,7 @@ class AuthPresentor: AuthViewPresenterProtocol {
     }
     
     func pushToTabBar() { // запрос к апи сделать
-        router?.pushToMainTabBar(schedule: scheduleModel!.schedule)
+        router?.pushToMainTabBar(schedule: scheduleModel?.schedule ?? [])
     }
     
     // MARK: - KeyBoard Notifications

@@ -44,13 +44,14 @@ class Router: RouterProtocol {
             let tabBarController = UITabBarController()
             guard let assemblyBuilder = assemblyBuilder else { return }
             let scheduleViewController = assemblyBuilder.createScheduleModule(schedule: schedule, router: self)
-            let campusViewController = assemblyBuilder.createCampusModule()
+            let campusViewController = UINavigationController(rootViewController: assemblyBuilder.createCampusModule())
             
             
             tabBarController.viewControllers = [UINavigationController(rootViewController: scheduleViewController) , campusViewController ]
             
             tabBarController.tabBar.items?[0].title = "Расписание"
             tabBarController.tabBar.items?[1].title = "Карта корпусов"
+            
             navigationController.pushViewController(tabBarController, animated: true)
         }
     }

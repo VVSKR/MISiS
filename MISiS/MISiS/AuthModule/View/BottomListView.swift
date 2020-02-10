@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BottomListViewDelegate: class {
+protocol BottomListViewDelegate: AnyObject {
     func dissmissList()
     func selectRow(item: String)
 }
