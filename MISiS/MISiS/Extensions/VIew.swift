@@ -22,7 +22,7 @@ extension UIView {
     func configure() {
         self.layer.cornerRadius = self.frame.height / 2
         self.layer.borderColor = UIColor.systemBlue.cgColor
-        self.layer.borderWidth = 4
+        self.layer.borderWidth = 2
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 2)

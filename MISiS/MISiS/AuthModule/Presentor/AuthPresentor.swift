@@ -55,6 +55,7 @@ class AuthPresentor: AuthViewPresenterProtocol {
         self.view = view
         self.networkManager = networkManager
         self.router = router
+        addKeyboardNotifications()
     }
     func getSchedule(requestModel: ScheduleRequestModel) {
         networkManager.getSchedule(institution: requestModel.institution, year: requestModel.year, group: requestModel.group, subGroup: requestModel.subgroup) { [weak self] result in

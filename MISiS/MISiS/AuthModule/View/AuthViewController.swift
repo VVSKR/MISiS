@@ -13,6 +13,7 @@ class AuthViewController: UIViewController {
     public var presenter: AuthViewPresenterProtocol!
     
     private let logoImageView = UIImageView(image: UIImage(named: "mpei_short_logo"))
+    private let backgroundImage = UIImageView(image: UIImage(named: ""))
     private let greetingsLabel = UILabel()
     private var selectInstitutionButton = CustomSizedButton()
     private var groupTextField = CustomSizedTextField()
@@ -46,7 +47,6 @@ class AuthViewController: UIViewController {
         setTableView()
         setContinueButton()
         setGestureRecognizer()
-        presenter.addKeyboardNotifications()
     }
 }
 
@@ -90,7 +90,8 @@ private extension AuthViewController {
     func setSelectInstitutionButton() {
 //
         selectInstitutionButton.setTitle("Выберите институт", for: .normal)
-        selectInstitutionButton.setTitleColor(UIColor.gray.withAlphaComponent(0.6), for: .normal)
+        selectInstitutionButton.titleLabel?.font = .systemFont(ofSize: 17)
+        selectInstitutionButton.setTitleColor(UIColor.gray.withAlphaComponent(0.55), for: .normal)
         selectInstitutionButton.contentHorizontalAlignment = .left
         
         selectInstitutionButton.addTarget(self, action: #selector(tapInstitutionSelectButton), for: .touchUpInside)
@@ -119,6 +120,7 @@ private extension AuthViewController {
         groupTextField.tintColor = .black
         
         groupTextField.addSeparator(at: .bottom, color: .lightBlue, weight: 1)
+//        groupTextField.font = Fonts.bodyFont
         groupTextField.returnKeyType = .continue
         groupTextField.autocorrectionType = .no
 
@@ -166,7 +168,7 @@ private extension AuthViewController {
         continueButtonYConstraint.constant = -16
         
         NSLayoutConstraint.activate([
-            continueButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.07),
+            continueButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
             continueButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.8),
             continueButtonYConstraint,
             continueButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
@@ -202,9 +204,9 @@ private extension AuthViewController {
     // MARK: - Continue Button
     @objc
     func continueButtonPressed() {
-//        presenter.isDataValid(institutionName: selectInstitutionButton.titleLabel!.text!,
-//                              groupName: groupTextField.text)
-        presenter.pushToTabBar()
+        presenter.isDataValid(institutionName: selectInstitutionButton.titleLabel!.text!,
+                              groupName: groupTextField.text)
+//        presenter.pushToTabBar()
     }
     
     func setCourse() {

@@ -15,12 +15,12 @@ public class DGSTileOverlay: MKTileOverlay {
     private let retinaFormat = "https://rtile2.maps.2gis.com/tiles?x=%d&y=%d&z=%d&v=1"
     
     override public func url(forTilePath path: MKTileOverlayPath) -> URL {
-        return URL(string: String(format: retinaFormat, path.x, path.y, path.z)) ?? super.url(forTilePath: path)
+        return URL(string: String(format: retinaFormat, path.x, path.y, path.z)) ?? super.url(forTilePath: path) 
     }
     
     internal init() {
         super.init(urlTemplate: nil)
-        cache.countLimit = 20  //important
+        cache.countLimit = 20
         tileSize = CGSize(width: 512, height: 512)
         canReplaceMapContent = true
         maximumZ = 18
@@ -28,7 +28,7 @@ public class DGSTileOverlay: MKTileOverlay {
     
     override public func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {
         let url = self.url(forTilePath: path)
-
+        print(url)
         if let cachedData = self.cache.object(forKey: url as NSURL) as Data? {
             result(cachedData, nil)
         } else {

@@ -18,6 +18,7 @@ class BottomListView: UIView {
     var tableView: UITableView!
     var tableViewTopConstraint: NSLayoutConstraint!
     var list: [String] = []
+    var textAligment: NSTextAlignment = .left
     weak var delegate: BottomListViewDelegate?
     
     override init(frame: CGRect) {
@@ -30,8 +31,9 @@ class BottomListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func set(list: [String]) {
+    public func set(list: [String], textAligment: NSTextAlignment = .left) {
         self.list = list
+        self.textAligment = textAligment
         setupTableView()
         setupGestureTap()
         showAnimated()
@@ -80,6 +82,7 @@ extension BottomListView: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = list[indexPath.row]
         cell.backgroundColor = .black
         cell.textLabel?.textColor = .white
+        cell.textLabel?.textAlignment = textAligment
         return cell
     }
     

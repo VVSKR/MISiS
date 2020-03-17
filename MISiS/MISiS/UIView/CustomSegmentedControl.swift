@@ -33,7 +33,7 @@ class CustomSegmentedControl: UIView {
     }
     
     func setIndex(position: CGFloat) {
-        buttons.forEach({ $0.setTitleColor(textColor, for: .normal) })
+        buttons.forEach( { $0.setTitleColor(textColor, for: .normal) })
         let index = Int(position + 0.5)
         let button = buttons[index]
         selectedIndex = index

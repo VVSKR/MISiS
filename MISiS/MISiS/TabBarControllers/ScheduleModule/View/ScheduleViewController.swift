@@ -67,16 +67,20 @@ private extension ScheduleViewController {
     }
     
     func setCollectionView() {
-        let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.scrollDirection = .horizontal
-        collectionLayout.minimumLineSpacing = 0
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
+//        let collectionLayout = UICollectionViewFlowLayout()
+//        collectionLayout.scrollDirection = .horizontal
+//        collectionLayout.minimumLineSpacing = 0
+//        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.isPagingEnabled = true
+        collectionView.decelerationRate = .fast
+//        collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: ScheduleCell.reuseID)
+        
+        collectionView.collectionViewLayout = CenteredFlowLayout()
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -152,11 +156,11 @@ extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewData
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: collectionView.frame.width,
-                      height: collectionView.frame.height)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        return CGSize(width: collectionView.frame.width,
+//                      height: collectionView.frame.height)
+//    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         presenter.setSegmentPosition()
@@ -184,10 +188,6 @@ extension ScheduleViewController: ScheduleViewProtocol {
     func reloadCollectionView() {
         collectionView.reloadData()
     }
-    
-    
-    
-    
 }
 
 extension ScheduleViewController: CustomSegmentedControlDelegate {
