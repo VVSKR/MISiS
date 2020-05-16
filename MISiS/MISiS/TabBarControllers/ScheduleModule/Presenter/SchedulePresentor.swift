@@ -36,6 +36,7 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
     weak var view: ScheduleViewProtocol?
     var router: RouterProtocol?
     var schedule: [LessonModel]
+    let weekDays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"]
     
     private var currentWeek: Int = 1
     
@@ -75,6 +76,8 @@ class SchedulePresenter: ScheduleViewPresenterProtocol {
     func setDataSourse(_ cell: ScheduleCell, indexPath: Int) {
         let schedule = getLessons(for: indexPath + 1) // Структура Day хуйнч какая-то, надо поменять
         cell.dataSource = ScheduleDataSource(lessons: schedule, currentWeek: currentWeek)
+        cell.backgroundColor = .clear
+        cell.setTextForHeaderLabel(dayOfWeek: weekDays[indexPath])
     }
     
     func chooseDay(to day: Date) { // переименовать

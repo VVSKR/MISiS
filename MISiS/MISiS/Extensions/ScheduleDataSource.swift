@@ -12,7 +12,7 @@ import UIKit
 class ScheduleDataSource: NSObject, UITableViewDataSource {
     
     var lessons: [LessonModel]
-    var currentWeek: Int?
+    var currentWeek: Int
     
     init( lessons: [LessonModel], currentWeek: Int) {
         self.currentWeek = currentWeek

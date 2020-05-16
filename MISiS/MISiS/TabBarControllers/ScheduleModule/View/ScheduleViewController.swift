@@ -26,7 +26,7 @@ class ScheduleViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        setSegmentControll()
+//        setSegmentControll()
         setCollectionView()
         setDatePicker()
         setTapGesture()
@@ -67,25 +67,23 @@ private extension ScheduleViewController {
     }
     
     func setCollectionView() {
-//        let collectionLayout = UICollectionViewFlowLayout()
-//        collectionLayout.scrollDirection = .horizontal
-//        collectionLayout.minimumLineSpacing = 0
-//        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        let flowLayout = CenteredFlowLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.decelerationRate = .fast
-//        collectionView.isPagingEnabled = true
+        
+        collectionView.backgroundColor = .white
+
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(ScheduleCell.self, forCellWithReuseIdentifier: ScheduleCell.reuseID)
         
-        collectionView.collectionViewLayout = CenteredFlowLayout()
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: segmentControll.bottomAnchor, constant: 2),
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 2),
             collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
@@ -148,12 +146,13 @@ extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleCell.reuseID, for: indexPath) as? ScheduleCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScheduleCell.reuseID, for: indexPath) as? ScheduleCell else {
+            return UICollectionViewCell()
+        }
         
         presenter.setDataSourse(cell, indexPath: indexPath.row)
         
         return cell
-        
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -163,7 +162,7 @@ extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewData
 //    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        presenter.setSegmentPosition()
+//        presenter.setSegmentPosition()
     }
     
     

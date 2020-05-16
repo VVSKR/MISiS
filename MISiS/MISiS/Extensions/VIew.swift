@@ -20,13 +20,20 @@ extension UIView {
     }
 
     func configure() {
-        self.layer.cornerRadius = self.frame.height / 2
-        self.layer.borderColor = UIColor.systemBlue.cgColor
-        self.layer.borderWidth = 2
+        self.layer.cornerRadius = 8
+//        self.layer.borderColor = UIColor.systemBlue.cgColor
+//        self.layer.borderWidth = 1
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 2)
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 3
+    }
+}
+
+extension UIView {
+    func addShadow(opacity: Float = 0.5, color: UIColor = .black, offset: CGSize = .zero, radius: CGFloat = 8) {
+    
+        (layer.shadowOpacity, layer.shadowColor, layer.shadowOffset, layer.shadowRadius) = (opacity, color.cgColor, offset, radius)
     }
 }

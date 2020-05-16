@@ -10,20 +10,25 @@ import UIKit
 
 class CustomSizedTextField: UITextField {
     
+    private let leftInsests: CGFloat = 12
+    
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 7, dy: 0)
+        return bounds.insetBy(dx: leftInsests, dy: 0)
     }
 
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 7, dy: 0)
+        return bounds.insetBy(dx: leftInsests, dy: 0)
     }
 
 }
 
 class CustomSizedButton: UIButton {
+
+    private let leftInsests: CGFloat = 12
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: leftInsests, bottom: 0, right: 0)
     }
 }
 

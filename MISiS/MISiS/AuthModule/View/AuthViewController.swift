@@ -12,18 +12,21 @@ class AuthViewController: UIViewController {
     
     public var presenter: AuthViewPresenterProtocol!
     
-    private let logoImageView = UIImageView(image: UIImage(named: "mpei_short_logo"))
+    private let logoImageView = UIImageView(image: UIImage(named: "misisLogo"))
     private let backgroundImage = UIImageView(image: UIImage(named: ""))
     private let greetingsLabel = UILabel()
+    private let subtitleLabel = UILabel()
     private var selectInstitutionButton = CustomSizedButton()
     private var groupTextField = CustomSizedTextField()
     
     private var tableView = UITableView()
-    private var continueButton = UIButton()
+    private var continueButton = ButtonWithActivityIndicator()
     private var bottomList: BottomListView!
     
     private lazy var continueButtonYConstraint = continueButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
     private lazy var safeArea = view.safeAreaLayoutGuide
+    
+    private let heightElement: CGFloat = 50
     
     
     //MARK: - View Did Load
@@ -39,6 +42,7 @@ class AuthViewController: UIViewController {
         
         setLogo()
         setGreetingsLabel()
+        setSubTitleLabel()
         
         //        setInstitutionTextField()
         setSelectInstitutionButton()
@@ -62,28 +66,44 @@ private extension AuthViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 50),
+            logoImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 30),
             logoImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.75),
-            logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 1/3),
+            logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 1/2),
             logoImageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
         ])
     }
     
-    // Label
+    //MARK:  Label
     func setGreetingsLabel() {
-        greetingsLabel.text = "Добро пожаловать!"
-        greetingsLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        greetingsLabel.textAlignment = .center
+        greetingsLabel.text = "Вход"
+        greetingsLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        greetingsLabel.textAlignment = .left
         greetingsLabel.numberOfLines = 1
         
         view.addSubview(greetingsLabel)
         greetingsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            greetingsLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 8),
-            greetingsLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 36),
-            greetingsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -36),
+            greetingsLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 30),
+            greetingsLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
+            greetingsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
             greetingsLabel.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+        ])
+    }
+    
+    func setSubTitleLabel() {
+        subtitleLabel.text = "Выберите институт и группу"
+        subtitleLabel.font = UIFont.systemFont(ofSize: 18)
+        subtitleLabel.textAlignment = .left
+        subtitleLabel.numberOfLines = 1
+        
+        view.addSubview(subtitleLabel)
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            subtitleLabel.topAnchor.constraint(equalTo: greetingsLabel.bottomAnchor, constant: 6),
+            subtitleLabel.leadingAnchor.constraint(equalTo: greetingsLabel.leadingAnchor, constant: 0),
+            subtitleLabel.trailingAnchor.constraint(equalTo: greetingsLabel.trailingAnchor, constant: 0),
         ])
     }
     // MARK: - Text Field
@@ -96,17 +116,19 @@ private extension AuthViewController {
         
         selectInstitutionButton.addTarget(self, action: #selector(tapInstitutionSelectButton), for: .touchUpInside)
         
-        selectInstitutionButton.addSeparator(at: .bottom, color: .lightBlue, weight: 1)
+        selectInstitutionButton.layer.borderWidth = 1
+        selectInstitutionButton.layer.borderColor = UserColor.mainBlue.cgColor
+        selectInstitutionButton.layer.cornerRadius = 8
+//        selectInstitutionButton.addSeparator(at: .bottom, color: .lightBlue, weight: 1)
         
         view.addSubview(selectInstitutionButton)
         selectInstitutionButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            selectInstitutionButton.topAnchor.constraint(equalTo: greetingsLabel.bottomAnchor, constant: 30),
-            selectInstitutionButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
-            selectInstitutionButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
-            selectInstitutionButton.heightAnchor.constraint(equalToConstant: 40),
-            selectInstitutionButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+            selectInstitutionButton.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 20),
+            selectInstitutionButton.leadingAnchor.constraint(equalTo: greetingsLabel.leadingAnchor, constant: 0),
+            selectInstitutionButton.trailingAnchor.constraint(equalTo: greetingsLabel.trailingAnchor, constant: 0),
+            selectInstitutionButton.heightAnchor.constraint(equalToConstant: heightElement)
         ])
     }
     
@@ -119,19 +141,22 @@ private extension AuthViewController {
         groupTextField.placeholder = "Введите группу, например: БПИ-16-2"
         groupTextField.tintColor = .black
         
-        groupTextField.addSeparator(at: .bottom, color: .lightBlue, weight: 1)
+//        groupTextField.addSeparator(at: .bottom, color: .lightBlue, weight: 1)
+        groupTextField.layer.borderWidth = 1
+        groupTextField.layer.borderColor = UserColor.mainBlue.cgColor
+        groupTextField.layer.cornerRadius = 8
 //        groupTextField.font = Fonts.bodyFont
         groupTextField.returnKeyType = .continue
         groupTextField.autocorrectionType = .no
+        groupTextField.text = "БПИ-16-2"
 
         view.addSubview(groupTextField)
         groupTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            groupTextField.topAnchor.constraint(equalTo: selectInstitutionButton.bottomAnchor, constant: 30),
-            groupTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24),
-            groupTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24),
-            groupTextField.heightAnchor.constraint(equalToConstant: 40),
-            groupTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+            groupTextField.topAnchor.constraint(equalTo: selectInstitutionButton.bottomAnchor, constant: 15),
+            groupTextField.leadingAnchor.constraint(equalTo: greetingsLabel.leadingAnchor, constant: 0),
+            groupTextField.trailingAnchor.constraint(equalTo: greetingsLabel.trailingAnchor, constant: 0),
+            groupTextField.heightAnchor.constraint(equalToConstant: heightElement)
         ])
     }
     
@@ -159,22 +184,21 @@ private extension AuthViewController {
     
     func setContinueButton() {
         continueButton.setTitle("Продолжить", for: .normal)
-        continueButton.setTitleColor(.systemBlue, for: .normal)
+        continueButton.setTitleColor(.white, for: .normal)
         continueButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
-        continueButton.backgroundColor = .white
+        continueButton.backgroundColor = UserColor.mainBlue
         view.addSubview(continueButton)
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         
         continueButtonYConstraint.constant = -16
         
         NSLayoutConstraint.activate([
-            continueButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08),
-            continueButton.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.8),
-            continueButtonYConstraint,
-            continueButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+            continueButton.topAnchor.constraint(equalTo: groupTextField.bottomAnchor, constant: 25),
+            continueButton.heightAnchor.constraint(equalToConstant: heightElement),
+            continueButton.leadingAnchor.constraint(equalTo: greetingsLabel.leadingAnchor, constant: 0),
+            continueButton.trailingAnchor.constraint(equalTo: greetingsLabel.trailingAnchor, constant: 0),
         ])
         
-        continueButton.layoutIfNeeded()
         continueButton.configure()
     }
     
@@ -191,8 +215,7 @@ private extension AuthViewController {
         view.endEditing(true)
     }
     
-    @objc
-    func tapInstitutionSelectButton() {
+    @objc func tapInstitutionSelectButton() {
         view.endEditing(true)
         bottomList = BottomListView(frame: view.frame)
         bottomList.set(list: ["ИТАСУ", "ИБО", "ИНМиН", "МГИ", "ЭУПП", "ЭкоТех"])
@@ -202,8 +225,8 @@ private extension AuthViewController {
     
     
     // MARK: - Continue Button
-    @objc
-    func continueButtonPressed() {
+    @objc func continueButtonPressed() {
+        continueButton.startActivity()
         presenter.isDataValid(institutionName: selectInstitutionButton.titleLabel!.text!,
                               groupName: groupTextField.text)
 //        presenter.pushToTabBar()
@@ -213,6 +236,12 @@ private extension AuthViewController {
         
     }
     
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
 }
 
 // MARK: - TableView Delegate , DataSourse
@@ -244,7 +273,7 @@ extension AuthViewController: AuthViewProtocol {
     func hideKeyBoard() {
         UIView.animate(withDuration: 0.3) {
             self.continueButtonYConstraint.constant = -16
-            self.tableView.alpha = 1
+        self.tableView.alpha = 1
             self.view.layoutIfNeeded()
         }
         tableView.isUserInteractionEnabled = true
@@ -252,16 +281,18 @@ extension AuthViewController: AuthViewProtocol {
     
     func successResponce() { // не уверен, что этот запрос нужен
         print("SUCCESS")
-        // останавливать анимацию загрузки
+        continueButton.stopActivity()
         presenter.pushToTabBar()
     }
     
     func failureResponce() { // вызвать какой алерт и сообщать об ошибке
-        print("FAIL")
+        continueButton.stopActivity()
+        showAlert(title: "Упс...", message: "Что-то пошло не так. Попробуйте позже или свяжитесь с нами и мы решим вашу проблему")
     }
     
     func emptyResponce() { // вызвать какой алерт и говорить, что массив с распинием пустой
-        
+        continueButton.stopActivity()
+        showAlert(title: "Упс...", message: "Мы не нашли расписание для этой группы. Проверьте коректность введненных данных или свяжитесь с нами.")
     }
     
     func changeInstiotutionText(_ institution: String) {
@@ -270,10 +301,12 @@ extension AuthViewController: AuthViewProtocol {
     }
     
     func shakeInstitution() {
+        continueButton.stopActivity()
         selectInstitutionButton.shake()
     }
     
     func shakeGroup() {
+        continueButton.stopActivity()
         groupTextField.shake()
     }
     

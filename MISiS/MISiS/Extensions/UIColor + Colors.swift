@@ -44,6 +44,8 @@ extension UIColor {
 }
 
 class UserColor {
+    
+    static let mainBlue = UIColor(rgb: 0x0A78D3)
 
     static let gray5 = UIColor(rgb: 0xF7F7F7)
     static let gray20 = UIColor(rgb: 0xEAEAEA)

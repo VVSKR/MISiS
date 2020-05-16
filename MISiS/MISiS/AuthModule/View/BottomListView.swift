@@ -9,6 +9,7 @@
 import UIKit
 
 protocol BottomListViewDelegate: AnyObject {
+    
     func dissmissList()
     func selectRow(item: String)
 }
@@ -47,7 +48,7 @@ class BottomListView: UIView {
     
     
     func dissmiss() {
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.alpha = 0
             self.tableViewTopConstraint.constant = 0
             self.layoutIfNeeded()

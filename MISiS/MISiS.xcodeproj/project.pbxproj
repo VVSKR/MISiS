@@ -20,6 +20,7 @@
 		F13F0F5623F198DD00F01849 /* DGSTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13F0F5523F198DD00F01849 /* DGSTileOverlay.swift */; };
 		F14D69B0242005F6003EF0DF /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D69AF242005F6003EF0DF /* Fonts.swift */; };
 		F14D69B3242035BD003EF0DF /* CenteredFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D69B2242035BD003EF0DF /* CenteredFlowLayout.swift */; };
+		F14EDB09246FCD590083B9D0 /* UIButton + ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EDB08246FCD590083B9D0 /* UIButton + ActivityIndicator.swift */; };
 		F17EF7D123C2007500D36ED7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17EF7D023C2007500D36ED7 /* AppDelegate.swift */; };
 		F17EF7DB23C2007500D36ED7 /* MISiS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F17EF7D923C2007500D36ED7 /* MISiS.xcdatamodeld */; };
 		F17EF7DD23C2007600D36ED7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17EF7DC23C2007600D36ED7 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		F13F0F5523F198DD00F01849 /* DGSTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGSTileOverlay.swift; sourceTree = "<group>"; };
 		F14D69AF242005F6003EF0DF /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		F14D69B2242035BD003EF0DF /* CenteredFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredFlowLayout.swift; sourceTree = "<group>"; };
+		F14EDB08246FCD590083B9D0 /* UIButton + ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + ActivityIndicator.swift"; sourceTree = "<group>"; };
 		F17EF7CD23C2007500D36ED7 /* MISiS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MISiS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17EF7D023C2007500D36ED7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F17EF7DA23C2007500D36ED7 /* MISiS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MISiS.xcdatamodel; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				F11E7C2A23CB8A3000C2DDD3 /* TableView.swift */,
 				F11BB1D223EEC77400F21516 /* CustomTextField.swift */,
 				F14D69AF242005F6003EF0DF /* Fonts.swift */,
+				F14EDB08246FCD590083B9D0 /* UIButton + ActivityIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				F18AA43A23D1EF5A00A8FE8C /* NetworkRouter.swift in Sources */,
 				F18AA43E23D1F26F00A8FE8C /* HTTPMethod.swift in Sources */,
 				F1B648A323C7D73600C097C7 /* CustomSegmentedControl.swift in Sources */,
+				F14EDB09246FCD590083B9D0 /* UIButton + ActivityIndicator.swift in Sources */,
 				F1B6487E23C2AFB300C097C7 /* UIColor + Colors.swift in Sources */,
 				F18AA43723D1ECA900A8FE8C /* EndPointType.swift in Sources */,
 				F1386BFB23CF2B4700EF938A /* ScheduleModelDTO.swift in Sources */,
@@ -760,14 +764,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FAAR6MH96Y;
+				DEVELOPMENT_TEAM = 3MGVWL83BU;
 				INFOPLIST_FILE = MISiS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = .MISiS;
+				PRODUCT_BUNDLE_IDENTIFIER = VVSKR.MISiS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -781,14 +785,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FAAR6MH96Y;
+				DEVELOPMENT_TEAM = 24L54X8KAW;
 				INFOPLIST_FILE = MISiS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = .MISiS;
+				PRODUCT_BUNDLE_IDENTIFIER = VVSKR.MISiS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

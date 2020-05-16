@@ -13,8 +13,10 @@ final class CenteredFlowLayout: UICollectionViewFlowLayout {
     // MARK: - Constants
 
     private enum Constants {
-        static let spacing: CGFloat = 20
-        static let scale: CGFloat = 1.05
+        static let spacing: CGFloat = 15
+        static let scale: CGFloat = 1.04
+        
+        static let helpSpacing: CGFloat = 15
     }
 
     // MARK: - Private Properties
@@ -29,9 +31,9 @@ final class CenteredFlowLayout: UICollectionViewFlowLayout {
         return collectionView?.bounds ?? .zero
     }
     
-    private var widht: CGFloat {
-        return (collectionView?.bounds.width ?? 0) / 1.2
-    }
+//    private var widht: CGFloat {
+//        return (collectionView?.bounds.width ?? 0) / 1.2
+//    }
     
     private var frame: CGRect {
         return collectionView?.frame ?? .zero
@@ -49,7 +51,7 @@ final class CenteredFlowLayout: UICollectionViewFlowLayout {
         let proposedRect = CGRect(
             x: proposedContentOffset.x,
             y: 0,
-            width: widht,
+            width: bounds.width,
             height: bounds.height
         )
 
@@ -87,7 +89,7 @@ final class CenteredFlowLayout: UICollectionViewFlowLayout {
 
         let visibleRect = CGRect(origin: currentContentOffset, size: bounds.size)
         var customAttributes = [UICollectionViewLayoutAttributes]()
-        let maxDistance = widht
+        let maxDistance = bounds.width
 
         for attributes in attributes where attributes.frame.intersects(visibleRect) {
             guard let attributes = attributes.copy() as? UICollectionViewLayoutAttributes else {
@@ -118,8 +120,8 @@ final class CenteredFlowLayout: UICollectionViewFlowLayout {
     }
 
     private func configureItemSize() {
-        let width = widht
-        let height = bounds.height / Constants.scale
+        let width = bounds.width - Constants.helpSpacing * 4
+        let height = bounds.height / 1.1
         itemSize = CGSize(width: width, height: height)
     }
 
@@ -127,9 +129,9 @@ final class CenteredFlowLayout: UICollectionViewFlowLayout {
         let horizontalInset = Constants.spacing
         sectionInset = UIEdgeInsets(
             top: 0,
-            left: horizontalInset,
+            left: horizontalInset + Constants.helpSpacing,
             bottom: 0,
-            right: horizontalInset
+            right: horizontalInset + Constants.helpSpacing
         )
     }
 }

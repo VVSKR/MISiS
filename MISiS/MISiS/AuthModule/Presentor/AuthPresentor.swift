@@ -62,7 +62,10 @@ class AuthPresentor: AuthViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let schedule):
-                    guard schedule.success,schedule.schedule.count != 0 else { self?.view?.shakeGroup(); return }
+                    guard schedule.success, schedule.schedule.count != 0 else {
+                        self?.view?.emptyResponce()
+                        return
+                    }
                     self?.scheduleModel = schedule
                     self?.view?.successResponce()
                 case .failure(_):
@@ -108,12 +111,18 @@ class AuthPresentor: AuthViewPresenterProtocol {
     // MARK: - Data validation
     
     func isDataValid(institutionName: String, groupName: String?) { // переименовать
-        guard institutionName.count < 10 else { view?.shakeInstitution(); return }
+        guard institutionName.count < 10 else {
+            view?.shakeInstitution()
+            return
+        }
         guard let groupName = groupName, checkGroupNameValid(text: groupName),
-            let year = setCourse(groupName: groupName) else { view?.shakeGroup(); return }
+            let year = setCourse(groupName: groupName) else {
+                view?.shakeGroup()
+                return
+        }
         let scheduleRequest = ScheduleRequestModel(institution: institutionName, year: year, group: groupName, subgroup: 1)
         print(scheduleRequest)
-            // вызывать анимацию загрузки в view и после анимации вызывать getSchedule
+        // вызывать анимацию загрузки в view и после анимации вызывать getSchedule
         getSchedule(requestModel: scheduleRequest)
         
     }

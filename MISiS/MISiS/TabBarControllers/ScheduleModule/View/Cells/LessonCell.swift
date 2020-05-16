@@ -44,6 +44,8 @@ class LessonCell: UITableViewCell {
         lessonPlace.text = lesson.location
         lessonTeacher.text = lesson.teacher
         
+        backgroundColor = .clear
+        
         switch lesson.type {
         case .laboratory: colorLessonType.backgroundColor = .red
         case .lecture: colorLessonType.backgroundColor = .blue
