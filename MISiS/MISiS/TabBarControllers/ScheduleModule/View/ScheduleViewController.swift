@@ -10,7 +10,7 @@ import UIKit
 
 class ScheduleViewController: UIViewController {
     
-    var presenter: ScheduleViewPresenterProtocol!
+    var presenter: ScheduleViewPresenterProtocol?
     
     private lazy var safeArea = view.safeAreaLayoutGuide
     
@@ -30,18 +30,20 @@ class ScheduleViewController: UIViewController {
         setCollectionView()
         setDatePicker()
         setTapGesture()
-    
-          
-        
-        let rightBarItem = UIBarButtonItem(title: "Hi", style: .done, target: self, action: #selector(rightButtonPressed))
-        navigationController?.navigationBar.tintColor = .black
-        navigationItem.rightBarButtonItem = rightBarItem
+        setNavBar()
     }
     
     @objc func rightButtonPressed() {
-//         let index = Date.getIndexOfDayForSegmented() // перенести в презентор
-//         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
-        dateField.becomeFirstResponder()
+        let alert = UIAlertController(title: "Выберите дату", message: "\n\n\n\n\n\n\n\n", preferredStyle: .actionSheet)
+        alert.view.addSubview(datePicker)
+        let doneAction = UIAlertAction(title: "Выбрать", style: .cancel) { (_) in
+            self.doneActionFunc()
+        }
+        alert.addAction(doneAction)
+        self.present(alert, animated: true, completion: nil)
+      
+//        alert.addAction(title: "Done", style: .cancel)
+//        dateField.becomeFirstResponder()
     }
     
     
@@ -49,6 +51,17 @@ class ScheduleViewController: UIViewController {
 
 // MARK: - Setup view
 private extension ScheduleViewController {
+    
+    private func setNavBar() {
+        let calendarImage = UIImage(named: "calendar")
+        let rightBarItem = UIBarButtonItem(image: calendarImage, style: .done, target: self, action: #selector(rightButtonPressed))
+    
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.rightBarButtonItem = rightBarItem
+        navigationController?.setClearBackground()
+        
+        navigationController?.setTitleFont()
+    }
     
     func setSegmentControll() {
         segmentControll = CustomSegmentedControl()
@@ -95,12 +108,14 @@ private extension ScheduleViewController {
         view.addSubview(dateField)
         datePicker = UIDatePicker()
         dateField.inputView = datePicker
-        
+        dateField.frame = CGRect(x: 0, y: 45, width: 270, height: 200)
+        datePicker.center.x = view.center.x
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date()
         
-        let localID = Locale.preferredLanguages.first
-        datePicker.locale = Locale(identifier: localID!)
+        let loc = Locale(identifier: "ru")
+//        let localID = Locale.preferredLanguages.first
+        datePicker.locale = loc
         
         setPickerToolBar()
     }
@@ -108,8 +123,8 @@ private extension ScheduleViewController {
     func setPickerToolBar() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
-        let todayButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(doneAction))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneActionFunc))
+        let todayButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(doneActionFunc))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolBar.setItems([todayButton, flexSpace, doneButton], animated: true)
@@ -117,15 +132,17 @@ private extension ScheduleViewController {
     }
     
     @objc
-    func doneAction() {
+    func doneActionFunc() {
         // следующая неделя
 //        let currentDate = datePicker.date
 //        datePicker.date = Calendar.current.date(byAdding: .day, value: 7, to: currentDate)! //
-        presenter.setTitle(for: datePicker.date)
-        presenter.setCurrentWeek(for: datePicker.date)
+        presenter?.setTitle(for: datePicker.date)
+        presenter?.setCurrentWeek(for: datePicker.date)
         reloadCollectionView()
         view.endEditing(true)
     }
+    
+    
     
     func setTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureHundle))
@@ -150,7 +167,7 @@ extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewData
             return UICollectionViewCell()
         }
         
-        presenter.setDataSourse(cell, indexPath: indexPath.row)
+        presenter?.setDataSourse(cell, indexPath: indexPath.row)
         
         return cell
     }
@@ -173,7 +190,7 @@ extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewData
 extension ScheduleViewController: ScheduleViewProtocol {
     
     func setTitle(_ title: String?) {
-        self.title = title
+        navigationItem.title = title
     }
     
     func currentPosition() -> CGFloat {

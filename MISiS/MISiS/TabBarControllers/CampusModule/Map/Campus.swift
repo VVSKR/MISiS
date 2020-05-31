@@ -11,12 +11,12 @@ import MapKit
 
 enum CampusData {
     static public var campus =
-        ["А": CLLocationCoordinate2D(latitude: 55.755745, longitude: 37.707593),
-         "Б": CLLocationCoordinate2D(latitude: 55.755272, longitude: 37.707585),
-         "В": CLLocationCoordinate2D(latitude: 55.755324, longitude: 37.708747),
-         "Г": CLLocationCoordinate2D(latitude: 55.754761, longitude: 37.709111),
-         "Д": CLLocationCoordinate2D(latitude: 55.754936, longitude: 37.709936),
-         "Л": CLLocationCoordinate2D(latitude: 55.756741, longitude: 37.703137),
-         "К": CLLocationCoordinate2D(latitude: 55.754936, longitude: 37.709936)
+        ["А": CLLocationCoordinate2D(latitude: 55.72762134, longitude: 37.60798442), //
+         "Б": CLLocationCoordinate2D(latitude: 55.72809977, longitude: 37.60879512), //
+         "В": CLLocationCoordinate2D(latitude: 55.728087, longitude: 37.60721773), //
+         "Г": CLLocationCoordinate2D(latitude: 55.72731618, longitude: 37.6069147), //
+         "Д": CLLocationCoordinate2D(latitude: 55.72760133, longitude: 37.60626089),
+         "Л": CLLocationCoordinate2D(latitude: 55.72774243, longitude: 37.60592729), //
+         "К": CLLocationCoordinate2D(latitude: 55.72981547, longitude: 37.61011451) //
          ]
 }

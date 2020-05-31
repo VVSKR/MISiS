@@ -10,16 +10,14 @@ import UIKit
 
 class Fonts {
 
-    private static let sfProTextLightFont = "SFProText-Light"
-    private static let sfProTextRegularFont = "SFProText-Regular"
-    private static let sfProTextSemiboldFont = "SFProText-Semibold"
-    private static let sfProDisplayRegularFont = "SFProDisplay-Regular"
+    private static let sfProTextLightFont = "Webnar-Light"
+    private static let webnarRegularFont = "Webnar-Regular"
+    private static let webnarDemiboldFont = "Webnar-DemiBold"
+    private static let webnarBoldFont = "Webnar-Bold"
+    
 
-    static let title2Font = UIFont(name: sfProDisplayRegularFont, size: 22) ?? UIFont.boldSystemFont(ofSize: 20)
-    static let headlineFont = UIFont(name: sfProTextSemiboldFont, size: 17) ?? UIFont.boldSystemFont(ofSize: 17)
-    static let bodyFont = UIFont(name: sfProTextLightFont, size: 17) ?? UIFont.boldSystemFont(ofSize: 17)
-    static let calloutFont = UIFont(name: sfProTextSemiboldFont, size: 16) ?? UIFont.boldSystemFont(ofSize: 17)
-    static let subheadFont = UIFont(name: sfProTextLightFont, size: 15) ?? UIFont.systemFont(ofSize: 13)
-    static let footnoteFont = UIFont(name: sfProTextRegularFont, size: 13) ?? UIFont.systemFont(ofSize: 13)
-    static let caption2Font = UIFont(name: sfProTextRegularFont, size: 11) ?? UIFont.systemFont(ofSize: 11)
+    static let lightFont = UIFont(name: sfProTextLightFont, size: 15) ?? UIFont.systemFont(ofSize: 13)
+    static let regularFont = UIFont(name: sfProTextLightFont, size: 17) ?? UIFont.boldSystemFont(ofSize: 17)
+    static let demiBldFont = UIFont(name: webnarDemiboldFont, size: 17)  ?? UIFont.boldSystemFont(ofSize: 17)
+    static let boldFont = UIFont(name: webnarBoldFont, size: 22) ?? UIFont.boldSystemFont(ofSize: 20)
 }

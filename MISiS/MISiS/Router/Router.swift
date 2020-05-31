@@ -45,19 +45,32 @@ class Router: RouterProtocol {
             guard let assemblyBuilder = assemblyBuilder else { return }
             let scheduleViewController = assemblyBuilder.createScheduleModule(schedule: schedule, router: self)
             let campusViewController = UINavigationController(rootViewController: assemblyBuilder.createCampusModule())
+            let infoViewController = UINavigationController(rootViewController: assemblyBuilder.createInfoModule(router: self))
             
             
-            tabBarController.viewControllers = [UINavigationController(rootViewController: scheduleViewController) , campusViewController ]
+            tabBarController.viewControllers = [UINavigationController(rootViewController: scheduleViewController), campusViewController, infoViewController]
             
             tabBarController.tabBar.items?[0].title = "Расписание"
+            tabBarController.tabBar.items?[0].image = UIImage(named: "list")
+            
             tabBarController.tabBar.items?[1].title = "Карта корпусов"
+            tabBarController.tabBar.items?[1].image = UIImage(named: "location")
+            
+            tabBarController.tabBar.items?[2].title = "О приложении"
+            tabBarController.tabBar.items?[2].image = UIImage(named: "info")
             
             navigationController.pushViewController(tabBarController, animated: true)
         }
     }
     
+    func popToRootViewController() {
+        
+    }
+    
+    
+    
     func popToRoot() {
-        // не надо 
+        navigationController?.popToRootViewController(animated: true)
     }
     
     

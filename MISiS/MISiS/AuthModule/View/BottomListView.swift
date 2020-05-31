@@ -19,8 +19,11 @@ class BottomListView: UIView {
     var tableView: UITableView!
     var tableViewTopConstraint: NSLayoutConstraint!
     var list: [String] = []
+    var images: [UIImage?]? = []
     var textAligment: NSTextAlignment = .left
     weak var delegate: BottomListViewDelegate?
+    
+    private let safeArea: CGFloat = 40
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,8 +35,9 @@ class BottomListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func set(list: [String], textAligment: NSTextAlignment = .left) {
+    public func set(list: [String], images: [UIImage?]?, textAligment: NSTextAlignment = .center) {
         self.list = list
+        self.images = images
         self.textAligment = textAligment
         setupTableView()
         setupGestureTap()
@@ -59,11 +63,10 @@ class BottomListView: UIView {
     
     
     func showAnimated() {
-        let bottomPadding: CGFloat = 50
         UIView.animate(withDuration: 0.1, animations: {
             self.alpha = 0.2
         }) { (_) in
-            self.tableViewTopConstraint.constant = -self.tableView.contentSize.height - bottomPadding
+            self.tableViewTopConstraint.constant = -self.tableView.contentSize.height - self.safeArea
             UIView.animate(withDuration: 0.3) {
                 self.alpha = 1
                 self.layoutIfNeeded()
@@ -81,8 +84,9 @@ extension BottomListView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
         cell.textLabel?.text = list[indexPath.row]
-        cell.backgroundColor = .black
-        cell.textLabel?.textColor = .white
+        cell.imageView?.image = images?[indexPath.row]
+        cell.backgroundColor = .white
+        cell.textLabel?.textColor = .black
         cell.textLabel?.textAlignment = textAligment
         return cell
     }
@@ -104,8 +108,8 @@ private extension BottomListView {
     func setupTableView() {
         tableView = UITableView(frame: .zero)
         tableView.layer.cornerRadius = 15
-        tableView.separatorStyle = .none
-        
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         
         tableView.bounces = false
         tableView.isScrollEnabled = false
@@ -123,8 +127,8 @@ private extension BottomListView {
         tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: safeArea),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -safeArea),
             tableViewTopConstraint,
             tableView.heightAnchor.constraint(equalToConstant: tableView.contentSize.height)
         ])

@@ -29,5 +29,4 @@ class CampusPresenter: CampusViewPresenterProtocol {
         self.view = view
         
     }
-    
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LessonModel {
+struct LessonModel: Encodable, Decodable {
     
     private let kind: String
     

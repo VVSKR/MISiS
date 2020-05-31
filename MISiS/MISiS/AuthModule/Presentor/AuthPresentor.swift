@@ -67,6 +67,7 @@ class AuthPresentor: AuthViewPresenterProtocol {
                         return
                     }
                     self?.scheduleModel = schedule
+                    UserDefaults.standard.setShedule(shedule: self?.scheduleModel)
                     self?.view?.successResponce()
                 case .failure(_):
                     self?.view?.failureResponce()

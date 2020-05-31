@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationUsageDescription</key>
+	<string>Ваше текущее местоположение будет отображено на карте.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Ваше текущее местоположение будет отображено на карте.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Ваше текущее местоположение будет отображено на карте.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

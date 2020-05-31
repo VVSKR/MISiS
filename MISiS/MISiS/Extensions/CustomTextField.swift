@@ -54,7 +54,7 @@ class TextFieldWithImage: UITextField {
 
     func setupPlaceholder(text: String) {
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UserColor.gray60,
-                                                          .font: Fonts.bodyFont]
+                                                         .font: Fonts.demiBldFont]
         attributedPlaceholder = NSAttributedString(string: text, attributes: attributes)
     }
 

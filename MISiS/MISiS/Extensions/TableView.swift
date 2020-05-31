@@ -16,7 +16,10 @@ extension UITableView {
                                              width: self.bounds.size.width,
                                              height: self.bounds.size.height))
         
-        let imageView = UIImageView(image: UIImage(named: "noLessons"))
+        let imageArray = [UIImage(named: "emptyFirst"), UIImage(named: "emptySecond"), UIImage(named: "emptyThird")]
+        let randomNumber = Int.random(in: 0...2)
+        
+        let imageView = UIImageView(image: imageArray[randomNumber])
         let messageLabel = UILabel()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -27,9 +30,9 @@ extension UITableView {
         emptyView.addSubview(messageLabel)
         
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalTo: emptyView.widthAnchor, multiplier: 0.5),
+            imageView.widthAnchor.constraint(equalTo: emptyView.widthAnchor, multiplier: 0.7),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
-            imageView.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor, constant: -15),
+            imageView.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor, constant: -35),
             imageView.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor),
             
             messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
@@ -38,7 +41,7 @@ extension UITableView {
         ])
             
             
-            messageLabel.text = "День самостоятельных занятий"
+            messageLabel.text = "Занятий нет, можно и отдохнуть"
             messageLabel.numberOfLines = 0
             messageLabel.textAlignment = .center
             

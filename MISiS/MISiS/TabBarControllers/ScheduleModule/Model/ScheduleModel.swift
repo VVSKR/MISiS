@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ScheduleModel {
+struct ScheduleModel: Decodable, Encodable {
     let success: Bool
     var schedule: [LessonModel]
     

@@ -39,7 +39,11 @@ class AuthViewController: UIViewController {
 //        backgroundImage.image = UIImage(named: "misis1")
 //        backgroundImage.contentMode = .scaleAspectFill
 //        self.view.insertSubview(backgroundImage, at: 0)
-        
+        if UserDefaults.standard.returmGroup() != "" , UserDefaults.standard.returnUnstitute() != "", let schedule = UserDefaults.standard.returnSchedule() {
+            print(schedule)
+            presenter.scheduleModel = schedule
+            presenter.pushToTabBar()
+        }
         setLogo()
         setGreetingsLabel()
         setSubTitleLabel()
@@ -51,6 +55,7 @@ class AuthViewController: UIViewController {
         setTableView()
         setContinueButton()
         setGestureRecognizer()
+        
     }
 }
 
@@ -218,7 +223,8 @@ private extension AuthViewController {
     @objc func tapInstitutionSelectButton() {
         view.endEditing(true)
         bottomList = BottomListView(frame: view.frame)
-        bottomList.set(list: ["ИТАСУ", "ИБО", "ИНМиН", "МГИ", "ЭУПП", "ЭкоТех"])
+        let images = [UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share")]
+        bottomList.set(list: ["ИТАСУ", "ИБО", "ИНМиН", "МГИ", "ЭУПП", "ЭкоТех"], images: images, textAligment: .left)
         bottomList.delegate = self
         view.addSubview(bottomList)
     }
@@ -282,6 +288,7 @@ extension AuthViewController: AuthViewProtocol {
     func successResponce() { // не уверен, что этот запрос нужен
         print("SUCCESS")
         continueButton.stopActivity()
+        UserDefaults.standard.setGroup(institute: selectInstitutionButton.titleLabel?.text, group: groupTextField.text)
         presenter.pushToTabBar()
     }
     

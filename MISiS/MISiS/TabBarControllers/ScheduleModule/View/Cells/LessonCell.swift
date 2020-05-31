@@ -104,7 +104,7 @@ private extension LessonCell {
         
         lessonTimeStackView.distribution = .fillEqually
         lessonTimeStackView.axis = .vertical
-        lessonTimeStackView.layoutMargins = UIEdgeInsets(top: 2, left: 15, bottom: 0, right: 0)
+        lessonTimeStackView.layoutMargins = UIEdgeInsets(top: 2, left: 13, bottom: 0, right: 0)
         lessonTimeStackView.isLayoutMarginsRelativeArrangement = true
         lessonTimeStackView.addSeparator(at: .left, color: .lightGray)
                 
@@ -123,12 +123,12 @@ private extension LessonCell {
     
     func setLesson() {
         
-        lessonSubject.font = UIFont.boldSystemFont(ofSize: 17)
+        lessonSubject.font = UIFont.boldSystemFont(ofSize: 15)
         lessonSubject.numberOfLines = 2
         
-        lessonType.font = UIFont.systemFont(ofSize: 15)
+        lessonType.font = UIFont.systemFont(ofSize: 13)
         
-        lessonTeacher.font = UIFont.systemFont(ofSize: 15)
+        lessonTeacher.font = UIFont.systemFont(ofSize: 13)
         lessonTeacher.textColor = .darkGray
         
         lessonStackView.addArrangedSubview(lessonSubject)
@@ -136,7 +136,7 @@ private extension LessonCell {
         lessonStackView.addArrangedSubview(lessonTeacher)
         lessonStackView.alignment = .fill
         
-        lessonStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 5)
+        lessonStackView.layoutMargins = UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 5)
         lessonStackView.isLayoutMarginsRelativeArrangement = true
         
         lessonStackView.distribution = .fill
@@ -156,14 +156,14 @@ private extension LessonCell {
     }
     
     func setLessonPlace() {
-        lessonPlace.font = UIFont.systemFont(ofSize: 15)
+        lessonPlace.font = UIFont.systemFont(ofSize: 13)
         lessonPlace.textAlignment = .right
         contentView.addSubview(lessonPlace)
         
         lessonPlace.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             lessonPlace.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            lessonPlace.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            lessonPlace.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
         ])
         
         
