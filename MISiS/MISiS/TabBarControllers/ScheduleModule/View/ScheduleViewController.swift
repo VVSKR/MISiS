@@ -34,7 +34,7 @@ class ScheduleViewController: UIViewController {
     }
     
     @objc func rightButtonPressed() {
-        let alert = UIAlertController(title: "Выберите дату", message: "\n\n\n\n\n\n\n\n", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: nil, message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .actionSheet)
         alert.view.addSubview(datePicker)
         let doneAction = UIAlertAction(title: "Выбрать", style: .cancel) { (_) in
             self.doneActionFunc()

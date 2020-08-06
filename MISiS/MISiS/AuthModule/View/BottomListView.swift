@@ -88,6 +88,7 @@ extension BottomListView: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .white
         cell.textLabel?.textColor = .black
         cell.textLabel?.textAlignment = textAligment
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -113,7 +114,7 @@ private extension BottomListView {
         
         tableView.bounces = false
         tableView.isScrollEnabled = false
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = .white
         self.addSubview(tableView)
         
         tableView.delegate = self

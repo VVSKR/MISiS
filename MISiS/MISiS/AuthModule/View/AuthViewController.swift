@@ -223,8 +223,8 @@ private extension AuthViewController {
     @objc func tapInstitutionSelectButton() {
         view.endEditing(true)
         bottomList = BottomListView(frame: view.frame)
-        let images = [UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share"), UIImage(named: "share")]
-        bottomList.set(list: ["ИТАСУ", "ИБО", "ИНМиН", "МГИ", "ЭУПП", "ЭкоТех"], images: images, textAligment: .left)
+        let images = [UIImage(named: "itasy"), UIImage(named: "ibo"), UIImage(named: "inmin"), UIImage(named: "mgi"), UIImage(named: "eypp"), UIImage(named: "ecotex"), UIImage(named: "iibs")]
+        bottomList.set(list: ["ИТАСУ", "ИБО", "ИНМиН", "МГИ", "ЭУПП", "ЭкоТех", "ИИБС"], images: images, textAligment: .left)
         bottomList.delegate = self
         view.addSubview(bottomList)
     }
@@ -299,7 +299,7 @@ extension AuthViewController: AuthViewProtocol {
     
     func emptyResponce() { // вызвать какой алерт и говорить, что массив с распинием пустой
         continueButton.stopActivity()
-        showAlert(title: "Упс...", message: "Мы не нашли расписание для этой группы. Проверьте коректность введненных данных или свяжитесь с нами.")
+        showAlert(title: "Упс...", message: "Мы не нашли расписание для этой группы. Проверьте корректность введенных данных или свяжитесь с нами.")
     }
     
     func changeInstiotutionText(_ institution: String) {

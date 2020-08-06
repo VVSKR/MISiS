@@ -13,7 +13,7 @@ class CampusViewController: UIViewController {
     
     var presenter: CampusViewPresenterProtocol?
     
-    var currentAnnotation = MKPointAnnotation()
+    var currentAnnotation = MKCustomAnnotation()
     let tilesOverlay = DGSTileOverlay()
     //    lazy var locationManager = UserLocation()
     var campusButton = UIButton()
@@ -67,6 +67,7 @@ class CampusViewController: UIViewController {
         title =  "Карта корпусов"
         view.backgroundColor = .white
         view.addSubview(mapView)
+        
         mapView.insertOverlay(tilesOverlay, at: 0, level: .aboveLabels)
         mapView.delegate = self
         
@@ -112,7 +113,7 @@ class CampusViewController: UIViewController {
     }
 }
 
-extension CampusViewController: MKMapViewDelegate {
+extension CampusViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         return MKTileOverlayRenderer(overlay: overlay)
     }
@@ -126,14 +127,45 @@ extension CampusViewController: CampusViewProtocol{
 extension CampusViewController: BottomListViewDelegate {
     
     func selectRow(item: String) {
-        guard let campusLocation = CampusData.campus[item] else { return }
+        guard let campusLocation = CampusData.campus[item],
+            let adress = CampusData.adress[item] else { return }
         UIView.animate(withDuration: 0.5, animations: {
+            
             self.mapView.centerCoordinate = campusLocation
             self.currentAnnotation.coordinate = campusLocation
+            self.currentAnnotation.title = item
+            self.currentAnnotation.subtitle = adress
+        
         })
     }
     
     func dissmissList() {
         bottomList.removeFromSuperview()
     }
+}
+
+
+
+class MKCustomAnnotation: MKPointAnnotation {
+    open var image: UIImage?
+}
+
+
+extension CampusViewController: MKMapViewDelegate {
+  // 1
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard annotation is MKPointAnnotation else { return nil }
+
+    let identifier = "Annotation"
+    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+    if annotationView == nil {
+        annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        annotationView!.canShowCallout = true
+    } else {
+        annotationView!.annotation = annotation
+    }
+
+    return annotationView
+  }
 }

@@ -24,11 +24,11 @@ class AboutViewController: UIViewController {
         InfoAction(title: "Официальный сайт НИТУ МИСиС",
                    icon: UIImage(named: "misisMiniLogo"),
                    action: showUniversityWebsite),
-        InfoAction(title: "Поделиться приложение",
+        InfoAction(title: "Поделиться приложением",
                    icon: UIImage(named: "share"),
                    action: shareApp),
         InfoAction(title: "Обратная связь",
-                   icon: UIImage(named: "telegram"),
+                   icon: UIImage(named: "send"),
                    action: showMailComproser)
     ]
     
